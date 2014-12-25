@@ -8,9 +8,10 @@
                 <span class="pull-right">{{add.date | date:"MM-dd-yyyy"}}</span>
             </div>
         </div>
-        <div class="row">
-            <div class="col-sm-4">
-                <img data-ng-src='{{add.imageDataUrl}}' width="80%" class="pull-right"/>
+        <div class="row" >
+            <div class="col-sm-4" >
+                <img  data-ng-src='{{add.imageDataUrl}}' width="80%"  height="70%" class="pull-right"/>
+                <img ng-hide="add.imageDataUrl" ng-src="./img/no_image_available_svg.png" width="60%" height="10%" class="pull-right"/>
             </div>
             <div class="col-sm-8">
                 <div class="row margin-bottom-20">

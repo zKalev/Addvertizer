@@ -5,7 +5,7 @@ addApp.factory('AddsResource', ['$resource',  'baseServiceUrl', function($resour
     var AddsResource = $resource(baseServiceUrl+'/ads:id' , null, {
         'create': { method: 'POST', params: { id: '@id' }, isArray: false, headers: headers },
         'public': {  method: 'GET', isArray: true },
-        'all': {  method: 'GET' },
+        'all': {  method: 'GET',params:{PageSize:2} },
         'byId': { method: 'GET', params: { id: '@id' }, isArray: false, headers: headers },
         'join': { method:'PUT', params: { id: '@id' }, isArray: false, headers: headers }
     });
