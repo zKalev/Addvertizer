@@ -16,6 +16,6 @@ var addApp=angular.module('AddApp',['ngRoute', 'ngResource', 'ngCookies']).
                 $location.path('/unauthorized');
             }
         })
-        $rootScope.log=$log;
+        $rootScope.$log=$log;
     })
     .constant('baseServiceUrl', 'http://softuni-ads.azurewebsites.net/api');

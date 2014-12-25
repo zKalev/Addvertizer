@@ -1,8 +1,14 @@
 addApp.controller('AddsCtrl', ['$scope', 'AddsResource', function ($scope, AddsResource) {
 
-    $scope.currentUser = 'zkalev';
-    var a = AddsResource.all();
-      //[{test:'test',coa:'gorega'},{test:'test2',coa:'gorega2'}]
-    console.log(a);
-    console.log(JSON.stringify(a));
+
+      AddsResource.all().then(
+        function (data) {
+
+            $scope.ads = data.ads;
+            console.log(data.ads);
+            console.log(data.ads[0].imageDataUrl);
+        },
+        function (error) {
+            console.log(error)
+        });
 }])

@@ -2,10 +2,10 @@
 
 addApp.factory('AddsResource', ['$resource',  'baseServiceUrl', function($resource, baseServiceUrl) {
   var headers = {}
-    var AddsResource = $resource(baseServiceUrl+'/ads' , null, {
+    var AddsResource = $resource(baseServiceUrl+'/ads:id' , null, {
         'create': { method: 'POST', params: { id: '@id' }, isArray: false, headers: headers },
         'public': {  method: 'GET', isArray: true },
-        'all': {  method: 'GET'},
+        'all': {  method: 'GET' },
         'byId': { method: 'GET', params: { id: '@id' }, isArray: false, headers: headers },
         'join': { method:'PUT', params: { id: '@id' }, isArray: false, headers: headers }
     });
@@ -18,7 +18,7 @@ addApp.factory('AddsResource', ['$resource',  'baseServiceUrl', function($resour
             return AddsResource.public();
         },
         all: function(request) {
-            return AddsResource.all(request);
+            return AddsResource.all(request).$promise;
         },
         byId: function(id) {
             return AddsResource.byId({id: id});
