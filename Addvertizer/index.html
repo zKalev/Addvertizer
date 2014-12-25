@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" ng-app="AddApp" ng-cloak>
 <head>
     <meta charset="utf-8">
     <title>Addvertizer</title>
@@ -12,16 +12,17 @@
     <link rel="stylesheet" href="css/toastr.min.css"/>
     <link rel="stylesheet" href="css/app.css"/>
 </head>
-<body >
+<body ng-controller="ApplicationCtrl">
 <div class="navbar navbar-default">
     <div class="container">
 
     </div>
 </div>
-<h1>Hello Addvertizer! :)</h1>
+
 <div ng-view>
 
 </div>
+
 
 <hr/>
 <footer class="text-center" ng-cloak>
@@ -42,6 +43,10 @@
 <script src="lib/angular/angular-route.min.js"></script>
 <script src="lib/angular/angular-cookies.min.js"></script>
 <script src="js/app.js"></script>
+<script src="js/controllers/ApplicationCtrl.js"></script>
+<script src="js/directives/adds.js"></script>
+<script src="js/controllers/AddsCtrl.js"></script>
+<script src="js/services/resources/AddsResource.js"></script>
 
 </body>
 </html>
