@@ -1,27 +1,25 @@
-addApp.controller('PagerCtrl',['$scope', function ($scope) {
+addApp.controller('PagerCtrl', ['$scope', 'AddsResource', function ($scope, AddsResource) {
 
-        $scope.filteredTodos = []
-            ,$scope.currentPage = 1
-            ,$scope.numPerPage = 10
-            ,$scope.maxSize = 5;
+    $scope.currentPage = 1;
+    $scope.numPerPage = 5;
+    $scope.maxSize = 5;
 
-        $scope.makeTodos = function() {
-            $scope.todos = [];
-            for (i=1;i<=1000;i++) {
-                $scope.todos.push({ text:'todo '+i, done:false});
-            }
-        };
-        $scope.makeTodos();
+    $scope.numPages = function () {
+        return $scope.numPage;
+    };
 
-        $scope.numPages = function () {
-            return Math.ceil($scope.todos.length / $scope.numPerPage);
-        };
+    $scope.$watch('currentPage + numPerPage', function () {
 
-        $scope.$watch('currentPage + numPerPage', function() {
-            var begin = (($scope.currentPage - 1) * $scope.numPerPage)
-                , end = begin + $scope.numPerPage;
+        AddsResource.all($scope.currentPage).then(
+            function (data) {
 
-            $scope.filteredTodos = $scope.todos.slice(begin, end);
-        });
-
-    }])
+                $scope.ads = data.ads;
+                $scope.numPage = data.numPages;
+                console.log(data.numPages);
+            },
+            function (error) {
+                console.log(error);
+                throw Error(error);
+            });
+    });
+}])

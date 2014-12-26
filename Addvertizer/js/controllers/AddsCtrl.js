@@ -1,18 +1,28 @@
-addApp.controller('AddsCtrl', ['$scope', 'AddsResource', function ($scope, AddsResource) {
+addApp.controller('AddsCtrl', ['$scope', 'AddsResource', 'numberAdsPerPage', function ($scope, AddsResource, numberAdsPerPage) {
 
+    $scope.pager = {
+        currentPage: 1,
+        numPerPage: numberAdsPerPage,
+        maxSize: 5,
+        numPages: function () {
+            return $scope.numPage;
+        }
+    }
+    $scope.categoryId=undefined;
+    $scope.townId=undefined;
 
-      AddsResource.all().then(
-        function (data) {
+    $scope.$watch('pager.currentPage + pager.numPerPage', function () {
 
-            $scope.ads = data.ads;
-            console.log(data.ads);
-            console.log(data.ads[0].imageDataUrl);
-        },
-        function (error) {
-            console.log(error)
-        });
+        AddsResource.getAdds($scope.pager.currentPage,$scope.categoryId,$scope.townId).then(
+            function (data) {
 
-
-
-
+                $scope.ads = data.ads;
+                $scope.numPage = data.numPages;
+                console.log(data.numPages);
+            },
+            function (error) {
+                console.log(error);
+                throw Error(error);
+            });
+    })
 }])

@@ -21,4 +21,4 @@ var addApp=angular.module('AddApp',['ngRoute', 'ngResource', 'ngCookies','ui.boo
         })
         $rootScope.$log=$log;
     })
-    .constant('baseServiceUrl', 'http://softuni-ads.azurewebsites.net/api');
+    .constant('baseServiceUrl', 'http://softuni-ads.azurewebsites.net/api').constant('numberAdsPerPage',3);

@@ -1,4 +1,4 @@
-<div ng-controller="AddsCtrl" class="container-fluid">
+<div  class="container-fluid">
     <div ng-repeat="add in ads" class="breadcrumb">
         <div class="row margin-bottom-20">
             <div class="col-sm-6 text-center">
@@ -10,8 +10,8 @@
         </div>
         <div class="row">
             <div class="col-sm-4">
-                <img data-ng-src='{{add.imageDataUrl}}' width="80%" height="70%" class="pull-right"/>
-                <img ng-hide="add.imageDataUrl" ng-src="./img/no_image_available_svg.png" width="60%" height="10%"
+                <img data-ng-src='{{add.imageDataUrl}}' width="70%" height="70%" class="pull-right"/>
+                <img ng-hide="add.imageDataUrl" ng-src="./img/no_image_available_svg.png" width="60%" height="70%"
                      class="pull-right"/>
             </div>
             <div class="col-sm-8">
@@ -27,10 +27,10 @@
             </div>
         </div>
     </div>
-    <div class="row" ng-controller="PagerCtrl">
+    <div class="row" >
         <div class="">
-            <div data-pagination="" data-num-pages="numPages()"
-                 data-current-page="currentPage" data-max-size="maxSize"
+            <div data-pagination="" data-num-pages="pager.numPages()"
+                 data-current-page="pager.currentPage" data-max-size="pager.maxSize"
                  data-boundary-links="true"></div>
 
         </div>
