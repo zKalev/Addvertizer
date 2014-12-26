@@ -11,4 +11,8 @@ addApp.controller('AddsCtrl', ['$scope', 'AddsResource', function ($scope, AddsR
         function (error) {
             console.log(error)
         });
+
+
+
+
 }])

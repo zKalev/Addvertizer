@@ -1,10 +1,13 @@
 'use strict'
-var addApp=angular.module('AddApp',['ngRoute', 'ngResource', 'ngCookies']).
+var addApp=angular.module('AddApp',['ngRoute', 'ngResource', 'ngCookies','ui.bootstrap']).
     config(['$routeProvider', '$httpProvider', function($routeProvider, $httpProvider) {
 
         $routeProvider
             .when('/', {
                 templateUrl: './views/partials/home.html',
+                controller: 'ApplicationCtrl'
+            }) .when('/login', {
+                templateUrl: './views/partials/login.html',
                 controller: 'ApplicationCtrl'
             })
 

@@ -11,6 +11,11 @@
     <link rel="stylesheet" href="css/bootstrap-theme.min.css"/>
     <link rel="stylesheet" href="css/toastr.min.css"/>
     <link rel="stylesheet" href="css/app.css"/>
+
+
+    <link data-require="bootstrap-css@2.3.2" data-semver="2.3.2" rel="stylesheet" href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.min.css" />
+
+
 </head>
 <body ng-controller="ApplicationCtrl" ng-cloak>
 <div class="navbar navbar-default">
@@ -19,13 +24,13 @@
     </div>
 </div>
 
-<div ng-view >
+<div ng-view>
 
 </div>
 
 
 <hr/>
-<footer class="text-center" >
+<footer class="text-center">
     Authors: <strong>Zhivko Kalev</strong>
     <br/>
     Powered by:</strong> <a href="http://angularjs.org/" target="_blank">AngularJS</a> and <a
@@ -39,6 +44,7 @@
 <script src="lib/toastr/toastr.min.js"></script>
 <script src="lib/bootstrap/bootstrap.min.js"></script>
 <script src="lib/angular/angular.js"></script>
+<script data-require="angular-ui-bootstrap@0.3.0" data-semver="0.3.0" src="http://angular-ui.github.io/bootstrap/ui-bootstrap-tpls-0.3.0.min.js"></script>
 <script src="lib/angular/angular-resource.min.js"></script>
 <script src="lib/angular/angular-route.min.js"></script>
 <script src="lib/angular/angular-cookies.min.js"></script>
@@ -47,6 +53,9 @@
 <script src="js/directives/adds.js"></script>
 <script src="js/controllers/AddsCtrl.js"></script>
 <script src="js/services/resources/AddsResource.js"></script>
-
+<script src="js/services/resources/CategoriesResource.js"></script>
+<script src="js/services/resources/TownsResource.js"></script>
+<script src="js/controllers/HomeCtrl.js"></script>
+<script src="js/controllers/PagerCtrl.js"></script>
 </body>
 </html>
