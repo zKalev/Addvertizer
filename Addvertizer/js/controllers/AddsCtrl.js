@@ -45,7 +45,6 @@ addApp.controller('AddsCtrl', ['$scope', 'AddsResource', 'numberAdsPerPage', fun
     }
 
     $scope.$watch('categoryId', function (newValue, oldValue) {
-
         $scope.getAdds(newValue, $scope.townId);
     })
 

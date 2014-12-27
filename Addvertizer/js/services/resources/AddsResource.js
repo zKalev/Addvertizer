@@ -2,7 +2,7 @@
 
 addApp.factory('AddsResource', ['$resource', 'baseServiceUrl', 'numberAdsPerPage', function ($resource, baseServiceUrl, numberAdsPerPage) {
     var headers = {}
-    var AddsResource = $resource(baseServiceUrl + '/ads:id', null, {
+    var addsResource = $resource(baseServiceUrl + '/ads:id', null, {
         'create': {method: 'POST', params: {id: '@id'}, isArray: false, headers: headers},
         'public': {method: 'GET', isArray: true},
         'getAdds': {
@@ -14,19 +14,19 @@ addApp.factory('AddsResource', ['$resource', 'baseServiceUrl', 'numberAdsPerPage
     });
     return {
         create: function (trip) {
-            return AddsResource.create(trip).$promise;
+            return addsResource.create(trip).$promise;
         },
         public: function () {
-            return AddsResource.public();
+            return addsResource.public();
         },
         getAdds: function (startPage, categoryId, townId) {
-            return AddsResource.getAdds({StartPage: startPage, CategoryId: categoryId, TownId: townId}).$promise;
+            return addsResource.getAdds({StartPage: startPage, CategoryId: categoryId, TownId: townId}).$promise;
         },
         byId: function (id) {
-            return AddsResource.byId({id: id});
+            return addsResource.byId({id: id});
         },
         join: function (id) {
-            return AddsResource.join({id: id}).$promise;
+            return addsResource.join({id: id}).$promise;
         }
     }
 }]);
