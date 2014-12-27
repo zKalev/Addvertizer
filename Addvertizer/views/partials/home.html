@@ -1,28 +1,22 @@
 <div class="container-fluid" ng-controller="HomeCtrl">
 
-    <div class="row">
+    <div class="row" ng-controller="AddsCtrl">
         <div class="col-lg-2">
             <div ng-include="'views/partials/logRegBtns.html'"></div>
         </div>
-        <div class="col-lg-8" ng-controller="AddsCtrl">
-            <div adds ads='ads' pager="pager"></div>
+        <div class="col-lg-8">
+            <div adds ads='ads'></div>
+            <div pager data="pager"></div>
         </div>
         <div class="col-lg-2">
             <div class="row">
-                <div class="breadcrumb text-center">
-                    <h3> Categories</h3>
-                    <h4 ng-repeat="category in categories" ng-click="">{{category.name}}</h4>
-                </div>
+                <div categories data="categories" func="categoriesFunc"></div>
             </div>
 
             <div class="row">
-
+                <div towns data="towns" func="townsFunc"></div>
 
             </div>
         </div>
-
-
     </div>
-
-
 </div>

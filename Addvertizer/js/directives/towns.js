@@ -1,3 +1,12 @@
-/**
- * Created by zkalev on 25.12.14.
- */
+'use strict'
+
+addApp.directive('towns', [function () {
+    return {
+        restrict: 'A',
+        templateUrl: './views/directives/towns.html',
+        scope: {
+            data: '=data',
+            func:'=func'
+        }
+    }
+}]);

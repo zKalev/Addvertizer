@@ -1,5 +1,6 @@
 <div  class="container-fluid">
-    <div ng-repeat="add in ads" class="breadcrumb">
+    <span ng-model="categoryId"></span>
+    <div   ng-repeat="add in ads" class="breadcrumb">
         <div class="row margin-bottom-20">
             <div class="col-sm-6 text-center">
                 <span><strong>{{add.title}}</strong></span>
@@ -24,15 +25,8 @@
                 <div class="row margin-bottom-20">
                     Tel: <span class="breadcrumb">{{add.ownerPhone}}</span>
                 </div>
-            </div>
-        </div>
-    </div>
-    <div class="row" >
-        <div class="">
-            <div data-pagination="" data-num-pages="pager.numPages()"
-                 data-current-page="pager.currentPage" data-max-size="pager.maxSize"
-                 data-boundary-links="true"></div>
 
+            </div>
         </div>
     </div>
 </div>
