@@ -19,7 +19,7 @@ var addApp=angular.module('AddApp',['ngRoute', 'ngResource', 'ngCookies','ui.boo
     .run(function($rootScope, $location,$log) {
         $rootScope.$on('$routeChangeError', function(ev, current, previous, rejection) {
             if (rejection === 'not authorized') {
-                $location.path('/unauthorized');
+                $location.path('/');
             }
         })
         $rootScope.$log=$log;
