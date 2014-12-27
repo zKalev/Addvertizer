@@ -9,6 +9,9 @@ var addApp=angular.module('AddApp',['ngRoute', 'ngResource', 'ngCookies','ui.boo
             }) .when('/login', {
                 templateUrl: './views/partials/login.html',
                 controller: 'ApplicationCtrl'
+            }).when('/register',{
+                templateUrl:'./views/partials/register.html',
+                controller:'ApplicationCtrl'
             })
 
             .otherwise({ redirectTo: '/' });

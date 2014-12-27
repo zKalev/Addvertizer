@@ -4,3 +4,9 @@
 .margin-bottom-20 { margin-bottom: 2.0em; }
 .margin-bottom-25 { margin-bottom: 2.5em; }
 .margin-bottom-30 { margin-bottom: 3.0em; }
+#towns-select{
+    /*height:20px;*/
+}
+.form-control{
+    height: 40px !important;
+}
