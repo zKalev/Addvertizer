@@ -12,7 +12,6 @@ addApp.factory('AddsResource', ['$resource', 'baseServiceUrl', 'numberAdsPerPage
         'byId': {method: 'GET', params: {id: '@id'}, isArray: false, headers: headers},
         'join': {method: 'PUT', params: {id: '@id'}, isArray: false, headers: headers}
     });
-
     return {
         create: function (trip) {
             return AddsResource.create(trip).$promise;

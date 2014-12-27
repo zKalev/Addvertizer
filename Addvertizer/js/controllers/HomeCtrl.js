@@ -1,16 +1,4 @@
 addApp.controller('HomeCtrl', ['$scope', 'CategoriesResource', 'TownsResource', 'AddsResource', function ($scope, CategoriesResource, TownsResource, AddsResource) {
-console.log('home controller----------------')
-
-    //AddsResource.all().then(
-    //    function (data) {
-    //
-    //        $scope.ads = data.ads;
-    //        console.log(data.ads);
-    //        console.log(data.ads[0].imageDataUrl);
-    //    },
-    //    function (error) {
-    //        console.log(error)
-    //    });
 
     TownsResource.all().then(
         function (data) {
@@ -19,8 +7,7 @@ console.log('home controller----------------')
         },
         function (error) {
             throw Error(error);
-        }
-    )
+        });
 
     CategoriesResource.all().then(
         function (data) {
@@ -30,9 +17,6 @@ console.log('home controller----------------')
         },
         function (error) {
             throw Error(error);
-        }
-    )
-
-
+        });
 }])
 

@@ -8,6 +8,7 @@ addApp.controller('AddsCtrl', ['$scope', 'AddsResource', 'numberAdsPerPage', fun
             return $scope.numPage;
         }
     }
+
     $scope.category = undefined;
     $scope.townId = undefined;
 
@@ -24,6 +25,7 @@ addApp.controller('AddsCtrl', ['$scope', 'AddsResource', 'numberAdsPerPage', fun
                 throw Error(error);
             });
     }
+
     $scope.categoriesFunc = {
         setCategoryId: function (id) {
             if (id === -1)
@@ -32,6 +34,7 @@ addApp.controller('AddsCtrl', ['$scope', 'AddsResource', 'numberAdsPerPage', fun
                 $scope.categoryId = id;
         }
     }
+
     $scope.townsFunc = {
         setTownId: function (id) {
             if (id === -1)
@@ -40,6 +43,7 @@ addApp.controller('AddsCtrl', ['$scope', 'AddsResource', 'numberAdsPerPage', fun
                 $scope.townId = id;
         }
     }
+
     $scope.$watch('categoryId', function (newValue, oldValue) {
 
         $scope.getAdds(newValue, $scope.townId);
@@ -53,5 +57,4 @@ addApp.controller('AddsCtrl', ['$scope', 'AddsResource', 'numberAdsPerPage', fun
     $scope.$watch('townId', function (newValue) {
         $scope.getAdds($scope.categoryId, newValue);
     })
-
 }])

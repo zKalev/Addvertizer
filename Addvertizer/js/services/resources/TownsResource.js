@@ -3,7 +3,6 @@ addApp.factory('TownsResource', ['$resource', 'baseServiceUrl', function ($resou
 
         all: {method: 'GET',isArray:true}
     });
-
     return{
 
         all: function () {

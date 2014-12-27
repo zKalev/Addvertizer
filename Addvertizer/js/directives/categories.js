@@ -6,7 +6,7 @@ addApp.directive('categories', [function () {
         templateUrl: './views/directives/categories.html',
         scope: {
             data: '=data',
-            func:'=func'
+            func: '=func'
         }
     }
 }]);
