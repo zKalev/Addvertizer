@@ -8,10 +8,15 @@ var addApp=angular.module('AddApp',['ngRoute', 'ngResource', 'ngCookies','ui.boo
                 controller: 'ApplicationCtrl'
             }) .when('/login', {
                 templateUrl: './views/partials/login.html',
-                controller: 'ApplicationCtrl'
+                controller: 'LoginCtrl'
             }).when('/register',{
                 templateUrl:'./views/partials/register.html',
-                controller:'ApplicationCtrl'
+                controller:'RegisterCtrl'
+            }).when('/user/home',{
+                templateUrl: './views/partials/home.html',
+                controller: 'ApplicationCtrl'
+            }).when('/user/ads/publish',{
+
             })
 
             .otherwise({ redirectTo: '/' });
@@ -21,7 +26,8 @@ var addApp=angular.module('AddApp',['ngRoute', 'ngResource', 'ngCookies','ui.boo
             if (rejection === 'not authorized') {
                 $location.path('/');
             }
-        })
+        });
+
         $rootScope.$log=$log;
-    })
+    }).value('toastr', toastr)
     .constant('baseServiceUrl', 'http://softuni-ads.azurewebsites.net/api').constant('numberAdsPerPage',3);

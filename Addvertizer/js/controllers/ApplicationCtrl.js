@@ -1,9 +1,26 @@
 'use strict'
-addApp.controller('ApplicationCtrl', ['$scope', '$location', function ($scope, $location) {
-    console.log('------application controller---------------');
-    $scope.currentUser = 'zkalev';
-    $scope.test = 'laaaa';
+addApp.controller('ApplicationCtrl', ['$scope', '$location', 'AuthenticationService', function ($scope, $location, AuthenticationService) {
+
+    $scope.isAuthenticated = function () {
+        return AuthenticationService.isAuthenticated();
+    }
+
+    $scope.getCurrentUser = function () {
+        return AuthenticationService.userInfo();
+    }
+
+    $scope.logout = function () {
+        AuthenticationService.logout().then(function () {
+            $location.path('/');
+        });
+    }
+
     $scope.location = $location;
-    console.log($scope.location);
-    this.test = 'laaaa this';
+    $scope.pathHeadingMapper = {
+        '/': 'Ads - Home',
+        '/login': 'Ads - Login',
+        '/register': 'Ads - Register',
+        '/user/home': 'Ads - Home'
+
+    };
 }])

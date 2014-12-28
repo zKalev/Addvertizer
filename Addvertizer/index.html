@@ -18,8 +18,21 @@
 </head>
 <body ng-controller="ApplicationCtrl" ng-cloak>
 <div class="navbar navbar-default">
-    <div class="container">
 
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 ">
+                <span class="text-success pull-right">{{pathHeadingMapper[location.path()]}}</span>
+            </div>
+            <div class="col-md-offset-2 col-md-4">
+                <div ng-show="isAuthenticated()" class="nav navbar-nav navbar-right ">
+
+                    <span class="text-success">{{getCurrentUser().username }}</span>
+                    <a href="#" ng-click="logout()">logout</a>
+
+                </div>
+            </div>
+        </div>
     </div>
 </div>
 
@@ -55,6 +68,10 @@
 <script src="js/directives/categories.js"></script>
 <script src="js/directives/adds.js"></script>
 
+<script src="js/services/NotificationService.js"></script>
+<script src="js/services/userservices/Identity.js"></script>
+<script src="js/services/userservices/AuthenticationService.js"></script>
+<script src="js/services/userservices/AuthorizationService.js"></script>
 
 <script src="js/services/resources/AddsResource.js"></script>
 <script src="js/services/resources/CategoriesResource.js"></script>
@@ -62,5 +79,7 @@
 <script src="js/controllers/ApplicationCtrl.js"></script>
 <script src="js/controllers/AddsCtrl.js"></script>
 <script src="js/controllers/HomeCtrl.js"></script>
+<script src="js/controllers/LoginCtrl.js"></script>
+<script src="js/controllers/RegisterCtrl.js"></script>
 </body>
 </html>

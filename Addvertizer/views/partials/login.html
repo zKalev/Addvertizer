@@ -7,13 +7,13 @@
         <div class="col-md-offset-3 col-md-3 col-md-offset-5" >
             <div class="form-login">
                 <h4><strong>Login</strong></h4>
-                <input type="text" id="userName" class="form-control input-sm chat-input" placeholder="username"/>
+                <input type="text" id="userName" ng-model="user.username" class="form-control input-sm chat-input" placeholder="username"/>
                 </br>
-                <input type="text" id="userPassword" class="form-control input-sm chat-input" placeholder="password"/>
+                <input type="password" ng-model="user.password" id="userPassword"  class="form-control input-sm chat-input" placeholder="password"/>
                 </br>
                 <div class="wrapper">
             <span class="group-btn">     
-                <a ng-click="" class="btn btn-primary btn-sm">login</a>
+                <a ng-click="login(user)" class="btn btn-primary btn-sm">login</a>
                 <a href="#/" class="btn btn-primary btn-sm">Cancel</a>
             </span>
                 </div>

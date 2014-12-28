@@ -1,12 +1,49 @@
-.margin-bottom-05 { margin-bottom: 0.5em; }
-.margin-bottom-10 { margin-bottom: 1.0em; }
-.margin-bottom-15 { margin-bottom: 1.5em; }
-.margin-bottom-20 { margin-bottom: 2.0em; }
-.margin-bottom-25 { margin-bottom: 2.5em; }
-.margin-bottom-30 { margin-bottom: 3.0em; }
-#towns-select{
+.margin-bottom-05 {
+    margin-bottom: 0.5em;
+}
+
+.margin-bottom-10 {
+    margin-bottom: 1.0em;
+}
+
+.margin-bottom-15 {
+    margin-bottom: 1.5em;
+}
+
+.margin-bottom-20 {
+    margin-bottom: 2.0em;
+}
+
+.margin-bottom-25 {
+    margin-bottom: 2.5em;
+}
+
+.margin-bottom-30 {
+    margin-bottom: 3.0em;
+}
+
+.margin-bottom-0 {
+    margin-bottom: 0px;
+}
+
+.margin-0 {
+    margin: 0 auto;
+}
+
+.background-color-gray{
+    background-color: #597ea2;
+}
+
+#towns-select {
     /*height:20px;*/
 }
-.form-control{
+
+.form-control {
     height: 40px !important;
+}
+
+#navigation-hr {
+    height: 1px;
+    background-color: #666666;
+
 }

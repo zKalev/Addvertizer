@@ -1,11 +1,11 @@
 'use strict';
 
-addApp.factory('AuthorizationService', ['identity', function(identity) {
+addApp.factory('AuthorizationService', ['Identity', function(Identity) {
     var headers = {};
 
     return {
         getAuthorizationHeader: function() {
-            var currentUser = identity.getCurrentUser();
+            var currentUser = Identity.getCurrentUser();
             if (currentUser) {
                 this.setAuthorizationHeader(currentUser['access_token']);
             }
