@@ -1,9 +1,9 @@
 'use strict'
 
-addApp.directive('adds', [function () {
+addApp.directive('myads', [function () {
     return {
         restrict: 'A',
-        templateUrl: './views/directives/ads.html',
+        templateUrl: './views/directives/myAds.html',
         scope: {
             ads: '=ads'
         }

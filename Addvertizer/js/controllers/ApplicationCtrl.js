@@ -42,7 +42,8 @@ addApp.controller('ApplicationCtrl',
                 '/login': 'Ads - Login',
                 '/register': 'Ads - Register',
                 '/user/home': 'Ads - Home',
-                '/user/ads/publish':'Ads - Publish New Ad'
+                '/user/ads/publish': 'Ads - Publish New Ad',
+                '/user/ads': 'Ads - My Ads'
 
             };
         }])

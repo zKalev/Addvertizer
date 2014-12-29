@@ -1,5 +1,5 @@
 'use strict'
-var addApp = angular.module('AddApp', ['ngRoute', 'ngResource', 'ngCookies', 'ui.bootstrap','naif.base64']).
+var addApp = angular.module('AddApp', ['ngRoute', 'ngResource', 'ngCookies', 'ui.bootstrap', 'naif.base64']).
     config(['$routeProvider', '$httpProvider', function ($routeProvider, $httpProvider) {
 
         $routeProvider
@@ -18,6 +18,9 @@ var addApp = angular.module('AddApp', ['ngRoute', 'ngResource', 'ngCookies', 'ui
             }).when('/user/ads/publish', {
                 templateUrl: './views/partials/new-ad.html',
                 controller: 'AddsCtrl'
+            }).when('/user/ads', {
+                templateUrl:'./views/partials/myAds.html',
+                controller:'MyAdsCtrl'
             })
 
             .otherwise({redirectTo: '/'});
@@ -31,4 +34,4 @@ var addApp = angular.module('AddApp', ['ngRoute', 'ngResource', 'ngCookies', 'ui
 
         $rootScope.$log = $log;
     }).value('toastr', toastr)
-    .constant('baseServiceUrl', 'http://softuni-ads.azurewebsites.net/api').constant('numberAdsPerPage', 3).constant('homePath','/');
+    .constant('baseServiceUrl', 'http://softuni-ads.azurewebsites.net/api').constant('numberAdsPerPage', 3).constant('homePath', '/');
