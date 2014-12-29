@@ -1,20 +1,31 @@
 'use strict';
 
-addApp.factory('AddsResource', ['$resource', 'baseServiceUrl', 'numberAdsPerPage', function ($resource, baseServiceUrl, numberAdsPerPage) {
-    var headers = {}
-    var addsResource = $resource(baseServiceUrl + '/ads:id', null, {
-        'create': {method: 'POST', params: {id: '@id'}, isArray: false, headers: headers},
-        'public': {method: 'GET', isArray: true},
-        'getAdds': {
-            method: 'GET',
-            params: {PageSize: numberAdsPerPage, StartPage: '@StartPage', CategoryId: '@CategoryId', TownId: '@TownId'}
-        },
-        'byId': {method: 'GET', params: {id: '@id'}, isArray: false, headers: headers},
-        'join': {method: 'PUT', params: {id: '@id'}, isArray: false, headers: headers}
-    });
+addApp.factory('AddsResource', ['$resource', 'AuthorizationService', 'baseServiceUrl', 'numberAdsPerPage', function ($resource, AuthorizationService, baseServiceUrl, numberAdsPerPage) {
+    var headers =AuthorizationService.getAuthorizationHeader(),
+        addsResource = $resource(baseServiceUrl + '/ads:id', null, {
+
+            'public': {method: 'GET', isArray: true},
+            'getAdds': {
+                method: 'GET',
+                params: {
+                    PageSize: numberAdsPerPage,
+                    StartPage: '@StartPage',
+                    CategoryId: '@CategoryId',
+                    TownId: '@TownId'
+                }
+            },
+            'byId': {method: 'GET', params: {id: '@id'}, isArray: false, headers: headers},
+            'join': {method: 'PUT', params: {id: '@id'}, isArray: false, headers: headers}
+
+        }),
+        createAddsResource = $resource(baseServiceUrl + '/user/ads:id', null, {
+
+            'create': {method: 'POST', params: {id: '@id'}, isArray: false, headers: headers}
+
+        })
     return {
-        create: function (trip) {
-            return addsResource.create(trip).$promise;
+        create: function (ad) {
+            return createAddsResource.create(ad).$promise;
         },
         public: function () {
             return addsResource.public();

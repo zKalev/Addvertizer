@@ -2,5 +2,5 @@
     <h3> Categories</h3>
     <a class="center-block" ng-click="func.setCategoryId(-1)">All</a>
     <a ng-repeat="category in data"
-       class="center-block" ng-click="func.setCategoryId($index+1)">{{category.name}}</a>
+       class="center-block" ng-click="func.setCategoryId(category.id)">{{category.name}}</a>
 </div>
