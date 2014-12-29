@@ -1,6 +1,6 @@
 addApp.controller('AddsCtrl',
-    ['$scope', 'AddsResource', 'CategoriesResource', 'TownsResource','NotificationService', 'numberAdsPerPage',
-        function ($scope, AddsResource, CategoriesResource, TownsResource, NotificationService,numberAdsPerPage) {
+    ['$scope', '$location', 'AddsResource', 'CategoriesResource', 'TownsResource', 'NotificationService', 'numberAdsPerPage',
+        function ($scope, $location, AddsResource, CategoriesResource, TownsResource, NotificationService, numberAdsPerPage) {
 
             $scope.pager = {
                 currentPage: 1,
@@ -48,15 +48,18 @@ addApp.controller('AddsCtrl',
 
             //    $scope.publichFunc = {
             $scope.publish = function (ad) {
-                alert('publish')
+                console.log(ad);
                 AddsResource.create(ad).then(
                     function (data) {
                         NotificationService.success('Ad published successfully!');
+                        $location.path('/user/home')
                     }
                 )
 
             }
             //   }
+
+            $scope.image = {};
 
             $scope.$watch('categoryId', function (newValue, oldValue) {
                 $scope.getAdds(newValue, $scope.townId);

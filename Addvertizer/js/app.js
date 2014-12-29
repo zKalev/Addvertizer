@@ -1,5 +1,5 @@
 'use strict'
-var addApp = angular.module('AddApp', ['ngRoute', 'ngResource', 'ngCookies', 'ui.bootstrap']).
+var addApp = angular.module('AddApp', ['ngRoute', 'ngResource', 'ngCookies', 'ui.bootstrap','naif.base64']).
     config(['$routeProvider', '$httpProvider', function ($routeProvider, $httpProvider) {
 
         $routeProvider
@@ -31,4 +31,4 @@ var addApp = angular.module('AddApp', ['ngRoute', 'ngResource', 'ngCookies', 'ui
 
         $rootScope.$log = $log;
     }).value('toastr', toastr)
-    .constant('baseServiceUrl', 'http://softuni-ads.azurewebsites.net/api').constant('numberAdsPerPage', 3);
+    .constant('baseServiceUrl', 'http://softuni-ads.azurewebsites.net/api').constant('numberAdsPerPage', 3).constant('homePath','/');
