@@ -14,42 +14,49 @@ addApp.factory('AddsResource', ['$resource', 'AuthorizationService', 'baseServic
                     TownId: '@TownId'
                 }
             }
-            //'byId': {method: 'GET', params: {id: '@id'}, isArray: false, headers: headers},
-            //'join': {method: 'PUT', params: {id: '@id'}, isArray: false, headers: headers}
-
         }),
-        userAddsResource = $resource(baseServiceUrl + '/user/ads:id', null, {
+        userAdsResource = $resource(baseServiceUrl + '/user/ads/:id', null, {
 
             'create': {method: 'POST', params: {id: '@id'}, isArray: false, headers: headers},
             'getMyAds': {
                 method: 'GET', params: {
                     PageSize: numberAdsPerPage,
-                    StartPage: '@StartPage'
+                    StartPage: '@StartPage',
+                    status: '@status'
                 }, headers: headers
-            }
+            },
+            'delete': {method: 'DELETE', params: {id: '@id'}, headers: headers}
 
-        })
+        }),
+        deactivateUserAdResource = $resource(baseServiceUrl + '/user/ads/deactivate/:id', null, {
+
+            'deactivateAd': {method: 'PUT', params: {id: '@id'}, headers: headers}
+        }),
+
+        publishAgainResource = $resource(baseServiceUrl + '/user/ads/publishagain/:id', null, {
+
+            'publishAgain': {method: 'PUT', params: {id: '@id'}, headers: headers}
+        });
+
     return {
         create: function (ad) {
-            return userAddsResource.create(ad).$promise;
+            return userAdsResource.create(ad).$promise;
         },
-        getMyAds: function (StartPage) {
-            return userAddsResource.getMyAds({StartPage: StartPage}).$promise;
+        getMyAds: function (startPage, status) {
+            return userAdsResource.getMyAds({StartPage: startPage, status: status}).$promise;
         },
 
         getAdds: function (startPage, categoryId, townId) {
             return addsResource.getAdds({StartPage: startPage, CategoryId: categoryId, TownId: townId}).$promise;
+        },
+        deactivateAd: function (adId) {
+            return deactivateUserAdResource.deactivateAd({id: adId}).$promise;
+        },
+        deleteAd: function (adId) {
+            return userAdsResource.delete({id: adId}).$promise
+        },
+        publishAgain: function (adId) {
+            return publishAgainResource.publishAgain({id: adId}).$promise;
         }
-
-
-
-        //byId: function (id) {
-        //    return addsResource.byId({id: id});
-        //},
-        //join: function (id) {
-        //    return addsResource.join({id: id}).$promise;
-        //},  public: function () {
-        //    return addsResource.public();
-        //}
     }
 }]);

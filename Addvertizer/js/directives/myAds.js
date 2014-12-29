@@ -5,7 +5,8 @@ addApp.directive('myads', [function () {
         restrict: 'A',
         templateUrl: './views/directives/myAds.html',
         scope: {
-            ads: '=ads'
+            ads: '=ads',
+            crudAd:'=crudAd'
         }
     }
 }]);

@@ -2,12 +2,74 @@
 
     <div class="row">
         <div class="col-md-2">
-
-            <div ng-include="'views/partials/navigation.html'"></div>
+            <div class="row">
+                <div ng-include="'views/partials/navigation.html'"></div>
+            </div>
+            <div class="row">
+                <div ng-include="'views/partials/my-ads-navigation.html'"></div>
+            </div>
         </div>
         <div class="col-md-10">
+            <div class="container-fluid">
+                <span ng-model="categoryId"></span>
 
-            <div myads  ads="ads"></div>
+                <div ng-repeat="add in ads" class="breadcrumb">
+
+                    <div class="row">
+                        <div class="col-md-8">
+                            <div class="row margin-bottom-20">
+                                <div class="col-sm-6 text-center">
+                                    <span><strong>{{add.title}}</strong></span>
+                                </div>
+                                <div class="col-sm-6">
+                                    <span class="pull-right">{{add.date | date:"MM-dd-yyyy"}}</span>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-4">
+                                    <img data-ng-src='{{add.imageDataUrl}}' width="70%" height="70%"
+                                         class="pull-right"/>
+                                    <img ng-hide="add.imageDataUrl" ng-src="./img/no_image_available_svg.png"
+                                         width="60%"
+                                         height="70%"
+                                         class="pull-right"/>
+                                </div>
+                                <div class="col-sm-8">
+                                    <div class="row margin-bottom-20">
+                                        <div> {{add.text}}</div>
+                                    </div>
+                                    <div class="row margin-bottom-20">
+                                        Name:<span> {{add.ownerName}}</span>
+                                    </div>
+                                    <div class="row margin-bottom-20">
+                                        Tel: <span>{{add.ownerPhone}}</span>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <ul class="list-unstyled left-border text-center">
+                                <li class="list-group-item"> Status: {{add.status}}</li>
+                                <li class="list-group-item" ng-if="add.status!=='Inactive'">
+                                    <button class="btn-md btn-primary" ng-click="crud.deactivateAd(add.id)">
+                                        Deactivate
+                                    </button>
+                                </li>
+                                <li ng-if="add.status==='Inactive'" class="list-group-item">
+                                    <button class="btn-md btn-primary" ng-click="crud.publishAgain(add.id)">Publish
+                                        again
+                                    </button>
+                                </li>
+                                <li ng-if="add.status==='Inactive'" class="list-group-item">
+                                    <button class="btn-md btn-primary" ng-click="crud.deleteAd(add.id)">Delete
+                                    </button>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
             <div pager data="pager"></div>
         </div>
     </div>

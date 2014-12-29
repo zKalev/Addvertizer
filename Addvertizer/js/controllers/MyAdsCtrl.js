@@ -1,3 +1,4 @@
+'use strict'
 addApp.controller('MyAdsCtrl',
     ['$scope', '$location', 'AddsResource', 'CategoriesResource', 'TownsResource', 'NotificationService', 'numberAdsPerPage',
         function ($scope, $location, AddsResource, CategoriesResource, TownsResource, NotificationService, numberAdsPerPage) {
@@ -11,9 +12,56 @@ addApp.controller('MyAdsCtrl',
                 }
             }
 
+            $scope.setStatus = function (status) {
+                if (status === -1) {
+                    $scope.status = undefined;
+                } else {
+                    $scope.status = status;
+                }
+            }
 
-            $scope.getMyAdds = function () {
-                AddsResource.getMyAds($scope.pager.currentPage).then(
+            $scope.crud = {
+
+                deactivateAd: function (adId) {
+                    AddsResource.deactivateAd(adId).then(
+                        function (data) {
+                            console.log(data);
+                            NotificationService.success(data.message);
+                        },
+                        function (error) {
+                            throw new Error(error);
+                            console.log(error);
+                        })
+                }
+                ,
+                deleteAd: function (adId) {
+                    AddsResource.deleteAd(adId).then(
+                        function (data) {
+                            console.log(data);
+                            NotificationService.success(data.message)
+                        }, function (error) {
+                            throw new Error(error);
+                            console.log(error);
+                        })
+                },
+                publishAgain: function (adId) {
+                    AddsResource.publishAgain(adId).then(
+                        function (data) {
+                            console.log(data);
+                            NotificationService.success(data.message)
+                        },
+                        function (error) {
+                            NotificationService.success(error.message);
+                            throw new Error(error);
+
+                            console.log(error);
+                        }
+                    )
+                }
+            }
+
+            $scope.getMyAdds = function (status) {
+                AddsResource.getMyAds($scope.pager.currentPage, status).then(
                     function (data) {
 
                         $scope.ads = data.ads;
@@ -25,14 +73,14 @@ addApp.controller('MyAdsCtrl',
                         throw Error(error);
                     });
             }
-            //$scope.getMyAdds();
-
 
             //pager watch
             $scope.$watch('pager.currentPage + pager.numPerPage', function () {
-                $scope.getMyAdds($scope.categoryId, $scope.townId);
+                $scope.getMyAdds($scope.status);
             })
-
-
+            $scope.$watch('status', function () {
+                $scope.getMyAdds($scope.status);
+                $scope.pager.currentPage = 1;
+            })
 
         }]);

@@ -41,9 +41,22 @@
 .margin-top-2 {
     margin-top: 2em;
 }
+
 .margin-top-1 {
     margin-top: 1em;
 }
+
+.vertical-line {
+    width: 2px;
+    height: 200px;
+    background-color: #0f7864;
+
+}
+
+.left-border {
+    border-left: 2px solid #000000;
+}
+
 .background-color-gray {
     background-color: #597ea2;
 }

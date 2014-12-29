@@ -46,7 +46,6 @@ addApp.controller('AddsCtrl',
                 }
             }
 
-            //    $scope.publichFunc = {
             $scope.publish = function (ad) {
                 console.log(ad);
                 AddsResource.create(ad).then(
@@ -57,8 +56,10 @@ addApp.controller('AddsCtrl',
                 )
 
             }
-            //   }
 
+            $scope.alert = function (msg) {
+                alert(msg)
+            }
             $scope.image = {};
 
             $scope.$watch('categoryId', function (newValue, oldValue) {
