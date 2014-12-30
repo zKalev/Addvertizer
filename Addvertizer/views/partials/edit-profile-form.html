@@ -1,0 +1,18 @@
+<form>
+    <div class="form-group breadcrumb text-center text-primary">
+        <strong>Edit Profile</strong>
+        <hr/>
+        <label for="input-name">Name:</label>
+        <input mg-model="user.name" id="input-name" class="form-control"/>
+        <label for="input-email">Email:</label>
+        <input mg-model="user.email" id="input-email" class="form-control"/>
+        <label for="input-phone">Phone:</label>
+        <input mg-model="user.phone" id="input-phone" class="form-control"/>
+        <label for="input-town">Town:</label>
+        <select id="input-town" class="form-control margin-bottom-15">
+            <opition ng-repeat="town in towns" value="{{town.id}}">town.name</opition>
+        </select>
+        <button class="btn-primary btn-md">Update</button>
+        <button class="btn-primary btn-md">Cancel</button>
+    </div>
+</form>

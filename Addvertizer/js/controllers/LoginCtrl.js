@@ -11,8 +11,7 @@ addApp.controller('LoginCtrl', ['$scope', '$location', 'AuthenticationService', 
             function (error) {
                 console.log(error);
                 NotificationService.error('Invalid login!')
-            }
-        )
+            })
     }
 
 }])
