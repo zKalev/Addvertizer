@@ -1,6 +1,6 @@
 addApp.controller('AddsCtrl',
-    ['$scope', '$location', 'AddsResource','AuthenticationService' ,'CategoriesResource', 'TownsResource', 'NotificationService', 'numberAdsPerPage',
-        function ($scope, $location, AddsResource, AuthenticationService,CategoriesResource, TownsResource, NotificationService, numberAdsPerPage) {
+    ['$scope', '$location', 'AddsResource', 'AuthenticationService', 'CategoriesResource', 'TownsResource', 'NotificationService', 'numberAdsPerPage',
+        function ($scope, $location, AddsResource, AuthenticationService, CategoriesResource, TownsResource, NotificationService, numberAdsPerPage) {
 
             $scope.pager = {
                 currentPage: 1,
@@ -21,6 +21,9 @@ addApp.controller('AddsCtrl',
                         $scope.ads = data.ads;
                         $scope.numPage = data.numPages;
                         console.log(data.ads);
+
+
+
                     },
                     function (error) {
                         console.log(error);
@@ -48,9 +51,9 @@ addApp.controller('AddsCtrl',
 
             $scope.publish = function (ad) {
                 console.log(ad);
-                var loggedUser=AuthenticationService.userInfo();
-                ad.ownerName=loggedUser.username;
-
+                var loggedUser = AuthenticationService.userInfo();
+                ad.ownerName = loggedUser.username;
+                console.log(ad.imageDataUrl);
                 alert(JSON.stringify(loggedUser));
                 alert(JSON.stringify(ad));
                 AddsResource.create(ad).then(

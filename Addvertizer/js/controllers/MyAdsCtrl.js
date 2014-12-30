@@ -63,6 +63,7 @@ addApp.controller('MyAdsCtrl',
                 },
                 updateAd: function (ad) {
                     console.log(JSON.stringify(ad))
+                    ad.changeImage = true;
                     AddsResource.update(ad).then(
                         function (data) {
                             console.log(data);
@@ -109,7 +110,6 @@ addApp.controller('MyAdsCtrl',
                         $scope.ads = data.ads;
                         $scope.numPage = data.numPages;
                         console.log(data.ads);
-                        console.log('_------------------_________--------------------------------____________----------');
                     },
                     function (error) {
                         NotificationService.error(error.data.message);
