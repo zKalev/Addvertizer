@@ -1,13 +1,12 @@
 <div class="container-fluid">
-    <div class="row">
 
+    <div class="row">
         <div class="col-md-2">
-            <div ng-if="isAuthenticated()" ng-include="'views/partials/navigation.html'"></div>
+            <div class="row">
+                <div ng-include="'views/partials/navigation.html'"></div>
+            </div>
         </div>
 
-        <!--<div class="col-md-8 col-md-offset-1">-->
-
-        <!--<div ad  publishFunc="publishFunc"></div>-->
         <form class=" col-md-6 col-md-offset-1 breadcrumb">
             <div class="row margin-bottom-30"></div>
             <div class="row">
@@ -18,7 +17,7 @@
                                 <div class="pull-left">
                                     <label for="new-ad-title">Title</label>
                                     <input id="new-ad-title" type="text" placeholder="title"
-                                           ng-model="ad.title" required="required" class="form-control"/>
+                                           ng-model="ad.title"  required="required" class="form-control"/>
                                 </div>
                             </div>
                         </div>
@@ -34,9 +33,12 @@
                     </div>
                 </div>
                 <div class="col-md-3">
-                    <div class="pull-left jumbotron margin-top-1" ng-hide="ad.imageDataUrl===undefined">
-                        <img ng-src='{{ad.imageDataUrl}}' >
-                    </div>
+                    <div class="pull-left jumbotron margin-top-1">
+                        <img ng-show="ad.imageDataUrl" data-ng-src='{{ad.imageDataUrl}}' width="70%" height="70%" class="pull-right"/>
+                        <img ng-hide="ad.imageDataUrl" ng-src="./img/no_image_available_svg.png" width="60%" height="70%"
+                             class="pull-right"/>
+
+                   </div>
                 </div>
                 <div class="col-md-5">
 
@@ -45,9 +47,9 @@
             <div class="row margin-bottom-15">
                 <div form-group class="col-md-12 ">
                     <!--<div >-->
-                    <label for="new-ad-image">Image</label>
-                    <input type="file" name="file" id="new-ad-image" ng-model="ad.imageDataUrl" base-sixty-four-input/>
-
+                    <label for="edit-ad-image">Image</label>
+                    <input type="file" name="file" id="edit-ad-image" ng-model="ad.imageDataUrl" base-sixty-four-input/>
+                    <button class="btn-primary" ng-click="ad.imageDataUrl=undefined">Delete Image</button>
                     <!--</div>-->
                 </div>
                 <!--<div class="col-md-4"></div>-->
@@ -57,8 +59,9 @@
                 <div class="row margin-bottom-15">
                     <div class="col-md-3">
                         <label for="new-ad-select-category">Category:</label>
-                        <select ng-model="ad.categoryId" id="new-ad-select-category">
-                            <option ng-repeat="category in categories" value="{{category.id}}">{{category.name}}
+                        <select  ng-model="ad.categoryId" id="new-ad-select-category">
+
+                            <option ng-repeat="category in categories"  ng-selected="category.name===ad.categoryName" value="{{category.id}}">{{category.name}}
                             </option>
                         </select>
                     </div>
@@ -69,7 +72,7 @@
                         <div class="pull-left">
                             <label for="new-ad-select-town">Town:</label>
                             <select ng-model="ad.townId" id="new-ad-select-town">
-                                <option ng-repeat="town in towns" value="{{town.id}}">{{town.name}}</option>
+                                <option ng-repeat="town in towns" ng-selected="town.name===ad.townName" value="{{town.id}}">{{town.name}}</option>
                             </select>
                         </div>
                     </div>
@@ -78,12 +81,10 @@
             </div>
             <div class="row margin-bottom-15">
                 <div class="col-md-12">
-                    <a class="bg-primary btn-sm" ng-click="publish(ad)">Publish</a>
-                    <a href="#/user/home" class="bg-primary btn-sm">Cancel</a>
+                    <a class="bg-primary btn-sm"   ng-click="crud.updateAd(ad)">Edit</a>
+                    <a href="#/user/ads" class="bg-primary btn-sm">Cancel</a>
                 </div>
             </div>
         </form>
-        <!--</div>-->
-        <div class="col-md-3"></div>
     </div>
 </div>

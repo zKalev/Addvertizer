@@ -25,7 +25,21 @@ addApp.factory('AddsResource', ['$resource', 'AuthorizationService', 'baseServic
                     status: '@status'
                 }, headers: headers
             },
-            'delete': {method: 'DELETE', params: {id: '@id'}, headers: headers}
+            'delete': {method: 'DELETE', params: {id: '@id'}, headers: headers},
+
+            'update': {
+                method: 'PUT', params: {
+                    id: '@id',
+                    changeImage: '@changeImage',
+                    title: '@title',
+                    text: '@text',
+                    imageDataUrl: '@imageDataUrl',
+                    categoryId: '@categoryId',
+                    townId: '@townId'
+
+                }, headers: headers
+            },
+            'getById': {method: 'GET', params: {id: '@id'}, headers: headers}
 
         }),
         deactivateUserAdResource = $resource(baseServiceUrl + '/user/ads/deactivate/:id', null, {
@@ -57,6 +71,20 @@ addApp.factory('AddsResource', ['$resource', 'AuthorizationService', 'baseServic
         },
         publishAgain: function (adId) {
             return publishAgainResource.publishAgain({id: adId}).$promise;
+        },
+        update: function (ad) {
+            return userAdsResource.update({
+                id: ad.id,
+                changeImage: true,
+                title: ad.title,
+                text: ad.text,
+                imageDataUrl: ad.imageDataUrl,
+                categoryId: ad.categoryId,
+                townId: ad.townId
+            }).$promise;
+        },
+        getById: function (adId) {
+            return userAdsResource.getById({id: adId}).$promise;
         }
     }
 }]);

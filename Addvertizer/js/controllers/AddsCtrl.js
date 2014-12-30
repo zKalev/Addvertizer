@@ -1,6 +1,6 @@
 addApp.controller('AddsCtrl',
-    ['$scope', '$location', 'AddsResource', 'CategoriesResource', 'TownsResource', 'NotificationService', 'numberAdsPerPage',
-        function ($scope, $location, AddsResource, CategoriesResource, TownsResource, NotificationService, numberAdsPerPage) {
+    ['$scope', '$location', 'AddsResource','AuthenticationService' ,'CategoriesResource', 'TownsResource', 'NotificationService', 'numberAdsPerPage',
+        function ($scope, $location, AddsResource, AuthenticationService,CategoriesResource, TownsResource, NotificationService, numberAdsPerPage) {
 
             $scope.pager = {
                 currentPage: 1,
@@ -48,9 +48,15 @@ addApp.controller('AddsCtrl',
 
             $scope.publish = function (ad) {
                 console.log(ad);
+                var loggedUser=AuthenticationService.userInfo();
+                ad.ownerName=loggedUser.username;
+
+                alert(JSON.stringify(loggedUser));
+                alert(JSON.stringify(ad));
                 AddsResource.create(ad).then(
                     function (data) {
                         NotificationService.success('Ad published successfully!');
+
                         $location.path('/user/home')
                     }
                 )

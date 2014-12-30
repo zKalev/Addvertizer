@@ -52,17 +52,25 @@
                             <ul class="list-unstyled left-border text-center">
                                 <li class="list-group-item"> Status: {{add.status}}</li>
                                 <li class="list-group-item" ng-if="add.status!=='Inactive'">
-                                    <button class="btn-md btn-primary" ng-click="crud.deactivateAd(add.id)">
+                                    <button class="btn-md btn-primary" ng-click="crud.deactivateAd(add)">
                                         Deactivate
                                     </button>
                                 </li>
                                 <li ng-if="add.status==='Inactive'" class="list-group-item">
-                                    <button class="btn-md btn-primary" ng-click="crud.publishAgain(add.id)">Publish
+                                    <button class="btn-md btn-primary width-100px"
+                                            ng-click="navigateToEditPage(add.id)">Edit
+
+                                    </button>
+                                </li>
+                                <li ng-if="add.status==='Inactive'" class="list-group-item">
+                                    <button class="btn-md btn-primary width-100px" ng-click="crud.publishAgain(add)">
+                                        Publish
                                         again
                                     </button>
                                 </li>
                                 <li ng-if="add.status==='Inactive'" class="list-group-item">
-                                    <button class="btn-md btn-primary" ng-click="crud.deleteAd(add.id)">Delete
+                                    <button class="btn-md btn-primary width-100px" ng-click="crud.deleteAd(add.id)">
+                                        Delete
                                     </button>
                                 </li>
                             </ul>

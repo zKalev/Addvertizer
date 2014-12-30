@@ -50,7 +50,10 @@
     width: 2px;
     height: 200px;
     background-color: #0f7864;
+}
 
+.width-100px {
+    width: 100px;
 }
 
 .left-border {

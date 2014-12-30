@@ -1,7 +1,7 @@
 'use strict'
 addApp.controller('MyAdsCtrl',
-    ['$scope', '$location', 'AddsResource', 'CategoriesResource', 'TownsResource', 'NotificationService', 'numberAdsPerPage',
-        function ($scope, $location, AddsResource, CategoriesResource, TownsResource, NotificationService, numberAdsPerPage) {
+    ['$scope', '$location', '$routeParams', 'AddsResource', 'CategoriesResource', 'TownsResource', 'NotificationService', 'numberAdsPerPage',
+        function ($scope, $location, $routeParams, AddsResource, CategoriesResource, TownsResource, NotificationService, numberAdsPerPage) {
 
             $scope.pager = {
                 currentPage: 1,
@@ -22,13 +22,15 @@ addApp.controller('MyAdsCtrl',
 
             $scope.crud = {
 
-                deactivateAd: function (adId) {
-                    AddsResource.deactivateAd(adId).then(
+                deactivateAd: function (ad) {
+                    AddsResource.deactivateAd(ad.id).then(
                         function (data) {
                             console.log(data);
                             NotificationService.success(data.message);
+                            ad.status = 'Inactive';
                         },
                         function (error) {
+                            NotificationService.error(error.data.message);
                             throw new Error(error);
                             console.log(error);
                         })
@@ -38,27 +40,67 @@ addApp.controller('MyAdsCtrl',
                     AddsResource.deleteAd(adId).then(
                         function (data) {
                             console.log(data);
+                            $('')
                             NotificationService.success(data.message)
                         }, function (error) {
-                            throw new Error(error);
+                            NotificationService.error(error.data.message);
                             console.log(error);
                         })
                 },
-                publishAgain: function (adId) {
-                    AddsResource.publishAgain(adId).then(
+                publishAgain: function (ad) {
+                    AddsResource.publishAgain(ad.id).then(
                         function (data) {
                             console.log(data);
-                            NotificationService.success(data.message)
+                            NotificationService.success(data.message);
+                            ad.status = 'WaitingApproval';
                         },
                         function (error) {
-                            NotificationService.success(error.message);
+                            NotificationService.error(error.data.message);
+                            console.log(error);
                             throw new Error(error);
 
+                        })
+                },
+                updateAd: function (ad) {
+                    console.log(JSON.stringify(ad))
+                    AddsResource.update(ad).then(
+                        function (data) {
+                            console.log(data);
+                            console.log(JSON.stringify(ad))
+                            NotificationService.success(data.message);
+                        },
+                        function (error) {
+
+                            NotificationService.error(error.data.message);
                             console.log(error);
-                        }
-                    )
+                            throw new Error(error);
+
+                        })
+                },
+                getById: function (id) {
+                    if (id !== undefined) {
+                        AddsResource.getById(id).then(
+                            function (data) {
+                                console.log(data);
+                                $scope.ad = data;
+
+                            },
+                            function (error) {
+
+                                NotificationService.error(error.data.message);
+                                throw new Error(error);
+                            })
+                    }
                 }
             }
+
+            $scope.crud.getById($routeParams.id);
+
+            $scope.navigateToEditPage = function (id) {
+                $scope.crud.getById(id);
+                $location.path('/user/ads/edit/' + id);
+            }
+
 
             $scope.getMyAdds = function (status) {
                 AddsResource.getMyAds($scope.pager.currentPage, status).then(
@@ -67,8 +109,10 @@ addApp.controller('MyAdsCtrl',
                         $scope.ads = data.ads;
                         $scope.numPage = data.numPages;
                         console.log(data.ads);
+                        console.log('_------------------_________--------------------------------____________----------');
                     },
                     function (error) {
+                        NotificationService.error(error.data.message);
                         console.log(error);
                         throw Error(error);
                     });

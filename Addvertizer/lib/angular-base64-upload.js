@@ -13,7 +13,7 @@ angular.module('naif.base64', [])
         var base64 = _arrayBufferToBase64(e.target.result);
         fileObject.base64 = base64;
         scope.$apply(function(){
-          ngModel.$setViewValue(fileObject);
+          ngModel.$setViewValue("data:" + fileObject.filetype + ";base64," + fileObject.base64);
         });
       };
 
