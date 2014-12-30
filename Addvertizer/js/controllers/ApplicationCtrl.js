@@ -43,7 +43,19 @@ addApp.controller('ApplicationCtrl',
                 '/register': 'Ads - Register',
                 '/user/home': 'Ads - Home',
                 '/user/ads/publish': 'Ads - Publish New Ad',
-                '/user/ads': 'Ads - My Ads'
+                '/user/ads': 'Ads - My Ads',
+                '/user/ads/delete': 'Ads - Delete Ad',
+                '/user/ads/edit':'Ads - Edit Ad'
 
             };
+
+            $scope.getHeadingByPath = function (path) {
+                var lastPathComponent = path.substr(path.lastIndexOf('/') + 1),
+                    pathWithOutLastComponent = path.substr(0, path.lastIndexOf('/'));
+                if (!isNaN(lastPathComponent)) {
+                    return $scope.pathHeadingMapper[pathWithOutLastComponent];
+                } else {
+                    return $scope.pathHeadingMapper[path];
+                }
+            }
         }])

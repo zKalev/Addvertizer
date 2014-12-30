@@ -24,7 +24,11 @@ var addApp = angular.module('AddApp', ['ngRoute', 'ngResource', 'ngCookies', 'ui
             }).when('/user/ads/edit/:id', {
                 templateUrl: './views/partials/edit-ad.html',
                 controller: 'MyAdsCtrl'
-            })
+            }).when('/user/ads/delete/:id', {
+                templateUrl: './views/partials/delete-ad.html',
+                controller: 'MyAdsCtrl'
+            }
+        )
 
             .otherwise({redirectTo: '/'});
     }])

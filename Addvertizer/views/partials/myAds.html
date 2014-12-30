@@ -28,11 +28,11 @@
                             <div class="row">
                                 <div class="col-sm-4">
                                     <img data-ng-src='{{add.imageDataUrl}}' width="70%" height="70%"
-                                         class="pull-right"/>
+                                         class="pull-right img-thumbnail image-size"/>
                                     <img ng-hide="add.imageDataUrl" ng-src="./img/no_image_available_svg.png"
                                          width="60%"
                                          height="70%"
-                                         class="pull-right"/>
+                                         class="pull-right img-thumbnail image-size"/>
                                 </div>
                                 <div class="col-sm-8">
                                     <div class="row margin-bottom-20">
@@ -69,7 +69,7 @@
                                     </button>
                                 </li>
                                 <li ng-if="add.status==='Inactive'" class="list-group-item">
-                                    <button class="btn-md btn-primary width-100px" ng-click="crud.deleteAd(add.id)">
+                                    <button class="btn-md btn-primary width-100px" ng-click="navigateToDeletePage(add.id)">
                                         Delete
                                     </button>
                                 </li>

@@ -12,6 +12,7 @@ addApp.controller('MyAdsCtrl',
                 }
             }
 
+
             $scope.setStatus = function (status) {
                 if (status === -1) {
                     $scope.status = undefined;
@@ -40,7 +41,7 @@ addApp.controller('MyAdsCtrl',
                     AddsResource.deleteAd(adId).then(
                         function (data) {
                             console.log(data);
-                            $('')
+                            $location.path('/user/ads')
                             NotificationService.success(data.message)
                         }, function (error) {
                             NotificationService.error(error.data.message);
@@ -100,6 +101,11 @@ addApp.controller('MyAdsCtrl',
             $scope.navigateToEditPage = function (id) {
                 $scope.crud.getById(id);
                 $location.path('/user/ads/edit/' + id);
+            }
+
+            $scope.navigateToDeletePage = function (id) {
+                $scope.crud.getById(id);
+                $location.path('/user/ads/delete/' + id);
             }
 
 

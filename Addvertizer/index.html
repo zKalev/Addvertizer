@@ -22,7 +22,7 @@
     <div class="container">
         <div class="row">
             <div class="col-md-6 ">
-                <span class="text-success pull-right">{{pathHeadingMapper[location.path()]}}</span>
+                <span class="text-success pull-right">{{getHeadingByPath(location.path())}}</span>
             </div>
             <div class="col-md-offset-2 col-md-4">
                 <div ng-show="isAuthenticated()" class="nav navbar-nav navbar-right ">

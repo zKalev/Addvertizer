@@ -1,0 +1,50 @@
+<div class="container-fluid">
+
+    <div class="row">
+        <div class="col-md-2">
+            <div class="row">
+                <div ng-include="'views/partials/navigation.html'"></div>
+            </div>
+        </div>
+
+        <div class="col-md-6 col-md-offset-1 breadcrumb">
+
+            <div class="breadcrumb">
+                <div class="row margin-bottom-20">
+                    <div class="col-sm-6 text-center">
+                        <span><strong>{{ad.title}}</strong></span>
+                    </div>
+                    <div class="col-sm-6">
+                        <span class="pull-right">{{ad.date | date:"MM-dd-yyyy"}}</span>
+                    </div>
+                </div>
+                <div class="row margin-bottom-15">
+                    <div class="col-sm-4">
+                        <img data-ng-src='{{ad.imageDataUrl}}' width="70%" height="70%" class="pull-right"/>
+                        <img ng-hide="ad.imageDataUrl" ng-src="./img/no_image_available_svg.png" width="60%"
+                             height="70%"
+                             class="pull-right"/>
+                    </div>
+                    <div class="col-sm-8">
+                        <div class="row margin-bottom-20">
+                            <div> {{ad.text}}</div>
+                        </div>
+                        <div class="row margin-bottom-20">
+                            Category:<span> {{ad.categoryName}}</span>
+                        </div>
+                        <div class="row margin-bottom-20">
+                            Town:<span> {{ad.townName}}</span>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <button class="btn-primary btn-md" ng-click="crud.deleteAd(ad.id)">Delete</button>
+                        <button class="btn-primary btn-md" ng-click="location.path('/user/ads')">Cancel</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

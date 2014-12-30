@@ -1,6 +1,7 @@
-<div  class="container-fluid">
+<div class="container-fluid">
     <span ng-model="categoryId"></span>
-    <div   ng-repeat="add in ads" class="breadcrumb">
+
+    <div ng-repeat="add in ads" class="breadcrumb">
         <div class="row margin-bottom-20">
             <div class="col-sm-6 text-center">
                 <span><strong>{{add.title}}</strong></span>
@@ -11,7 +12,9 @@
         </div>
         <div class="row">
             <div class="col-sm-4">
-                <img data-ng-src='{{add.imageDataUrl}}' width="70%" height="70%" class="pull-right"/>
+                <img data-ng-src='{{add.imageDataUrl}}' width="70%" height="70%"
+                     class="pull-right img-thumbnail image-size"/>
+
                 <img ng-hide="add.imageDataUrl" ng-src="./img/no_image_available_svg.png" width="60%" height="70%"
                      class="pull-right"/>
             </div>
@@ -20,10 +23,10 @@
                     <div> {{add.text}}</div>
                 </div>
                 <div class="row margin-bottom-20">
-                    Name:<span > {{add.ownerName}}</span>
+                    Name:<span> {{add.ownerName}}</span>
                 </div>
                 <div class="row margin-bottom-20">
-                    Tel: <span >{{add.ownerPhone}}</span>
+                    Tel: <span>{{add.ownerPhone}}</span>
                 </div>
 
             </div>
