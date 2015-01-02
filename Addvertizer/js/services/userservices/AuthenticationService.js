@@ -9,7 +9,7 @@ addApp.factory('AuthenticationService', ['$q', '$http', 'Identity', 'baseService
                 .success(function () {
                     deferred.resolve();
                 })
-            .error(function (error) {
+                .error(function (error) {
                     deferred.reject(error);
                 });
 
@@ -35,9 +35,9 @@ addApp.factory('AuthenticationService', ['$q', '$http', 'Identity', 'baseService
             return deferred.promise;
         },
         logout: function () {
-            var deferred = $q.defer();
+            var deferred = $q.defer(),
+                headers = AuthorizationService.getAuthorizationHeader();
 
-            var headers = AuthorizationService.getAuthorizationHeader();
             $http.post(userUrl + '/logout', {}, {headers: headers})
                 .success(function () {
                     Identity.setCurrentUser(undefined);
@@ -48,26 +48,32 @@ addApp.factory('AuthenticationService', ['$q', '$http', 'Identity', 'baseService
             return deferred.promise;
         },
         userInfo: function () {
-           // var deferred = $q.defer();
 
             var userInfo = Identity.getCurrentUser();
             return userInfo;
-            //if (userInfo) {
-            //   deferred.resolve(userInfo);
-            //}
-            //else {
-            //    var headers = AuthorizationService.getAuthorizationHeader();
-            //    $http.get(userUrl + '/profile', {headers: headers})
-            //        .success(function (response) {
-            //            var currentUser = Identity.getCurrentUser();
-            //            angular.extend(currentUser, {userInfo: response});
-            //            Identity.setCurrentUser(currentUser);
-            //            deferred.resolve(response);
-            //        });
-            //}
+            if (userInfo) {
+               deferred.resolve(userInfo);
+            }
+            else {
 
-           // return deferred.promise;
+            }
+
+            // return deferred.promise;
         },
+        changePassword: function (pass) {
+            var deferred = $q.defer(),
+                headers = AuthorizationService.getAuthorizationHeader();
+            var url = baseServiceUrl + '/user/changePassword';
+            $http.put(url, pass, {headers: headers}).success(function (data) {
+                deferred.resolve(data);
+
+            }).error(function (error) {
+                deferred.reject(error);
+                console.log(error);
+            });
+            return deferred.promise;
+        },
+
         isAuthenticated: function () {
             if (Identity.isAuthenticated()) {
                 return true;
