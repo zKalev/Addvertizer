@@ -1,8 +1,8 @@
 addApp.factory('UserResource', ['$resource', 'AuthorizationService', 'baseServiceUrl', function ($resource, AuthorizationService, baseServiceUrl) {
     var headers = AuthorizationService.getAuthorizationHeader(),
-        userResource = $resource(baseServiceUrl + '/towns', null, {
+        userResource = $resource(baseServiceUrl + '/admin/Users', null, {
 
-            all: {method: 'GET', isArray: true}
+            all: {method: 'GET',headers:headers}
         }),
         userProfile = $resource(baseServiceUrl + '/user/profile', null, {
             getUserProfile: {

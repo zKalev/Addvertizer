@@ -45,7 +45,8 @@ addApp.controller('ApplicationCtrl',
                 '/user/ads/publish': 'Ads - Publish New Ad',
                 '/user/ads': 'Ads - My Ads',
                 '/user/ads/delete': 'Ads - Delete Ad',
-                '/user/ads/edit':'Ads - Edit Ad'
+                '/user/ads/edit': 'Ads - Edit Ad',
+                '/user/profile': 'Ads - Edit User Profile'
 
             };
 

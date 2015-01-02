@@ -29,13 +29,25 @@ addApp.controller('UserCtrl', ['$scope', '$resource', 'AuthenticationService', '
             }
         )
     }
+    $scope.getUserProfile = function () {
+        UserResource.getUserProfile().then(
+            function (data) {
+                $scope.user = data;
+                console.log(data)
+            },
+            function (error) {
+                console.log(error);
+            });
+    }
 
-    UserResource.getUserProfile().then(
+
+    UserResource.all().then(
         function (data) {
-            $scope.user = data;
-            console.log(data)
+            $scope.users = data.users;
+            console.log(data);
         },
         function (error) {
-            console.log(error);
-        })
+         console.log(error)
+        });
+
 }]);

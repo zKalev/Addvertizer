@@ -23,7 +23,7 @@ addApp.factory('AuthenticationService', ['$q', '$http', 'Identity', 'baseService
                     if (response['access_token']) {
                         Identity.setCurrentUser(response);
                         AuthorizationService.setAuthorizationHeader(response['access_token']);
-                        deferred.resolve(true);
+                        deferred.resolve(response);
                     }
                     else {
                         deferred.resolve(false);

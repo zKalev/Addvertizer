@@ -6,7 +6,11 @@ addApp.controller('LoginCtrl', ['$scope', '$location', 'AuthenticationService', 
             function (data) {
                 console.log(data);
                 NotificationService.success('Logged in successfully!');
-                $location.path('/user/home');
+                if (data.isAdmin) {
+                    $location.path('/admin/ads');
+                } else {
+                    $location.path('/user/home');
+                }
             },
             function (error) {
                 console.log(error);

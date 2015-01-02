@@ -1,0 +1,37 @@
+<div class="container-fluid">
+
+        <div class="table-responsive ">
+            <table class="table table-bordered" >
+                <thead>
+                <tr>
+                    <th>Username</th>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Phone</th>
+                    <th>Action</th>
+                </tr>
+                </thead>
+                <tbody>
+
+                <tr ng-repeat="user in adminusersdata">
+                    <td>
+                        <output>{{user.username}}</output>
+                    </td>
+                    <td class="col-sm-2 text-center">
+                        <output>{{user.name}}</strong></output>
+                    </td>
+                    <td class="col-sm-2 text-center">
+                        <output>{{user.email}}</output>
+                    </td>
+                    <td class="col-sm-2 text-center">
+                        <output>{{user.phoneNumber}}</output>
+                    </td>
+                    <td class="col-sm-2 text-center">
+                        <a href="">Edit</a>
+                        <a href="">Delete</a>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+</div>

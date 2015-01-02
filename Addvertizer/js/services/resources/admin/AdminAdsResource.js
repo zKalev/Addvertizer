@@ -1,6 +1,6 @@
 'use strict';
 
-addApp.factory('AddsResource', ['$resource', 'AuthorizationService', 'baseServiceUrl', 'numberAdsPerPage', function ($resource, AuthorizationService, baseServiceUrl, numberAdsPerPage) {
+addApp.factory('AdminAdsResource', ['$resource', 'AuthorizationService', 'baseServiceUrl', 'numberAdsPerPage', function ($resource, AuthorizationService, baseServiceUrl, numberAdsPerPage) {
     var headers = AuthorizationService.getAuthorizationHeader(),
         addsResource = $resource(baseServiceUrl + '/ads:id', null, {
 

@@ -1,0 +1,21 @@
+<div class="container-fluid" >
+
+    <div class="row">
+        <div class="col-md-2">
+            <div ng-if="isAuthenticated()" ng-include="'views/partials/admin/navigation.html'"></div>
+            <div ng-if="isAuthenticated()" ng-include="'views/partials/admin/ads-navigation.html'"></div>
+        </div>
+        <div class="col-md-8">
+            <div adminads adminadsdata='adminadsdata'></div>
+            <div pager data="pager"></div>
+        </div>
+        <div class="col-md-2">
+            <div class="row">
+                <div categories data="categories" func="categoriesFunc"></div>
+            </div>
+            <div class="row">
+                <div towns data="towns" func="townsFunc"></div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -52,6 +52,7 @@ addApp.controller('AddsCtrl',
                 ad.ownerName = loggedUser.name;
                 ad.ownerPhone = loggedUser.phoneNumber;
                 ad.email = loggedUser.email;
+
                 AddsResource.create(ad).then(
                     function (data) {
                         NotificationService.success('Ad published successfully!');
@@ -75,7 +76,7 @@ addApp.controller('AddsCtrl',
             //pager watch
             $scope.$watch('pager.currentPage + pager.numPerPage', function () {
                 $scope.getAdds($scope.categoryId, $scope.townId);
-               
+
             })
 
             $scope.$watch('townId', function (newValue) {

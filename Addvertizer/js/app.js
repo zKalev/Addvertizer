@@ -27,12 +27,19 @@ var addApp = angular.module('AddApp', ['ngRoute', 'ngResource', 'ngCookies', 'ui
             }).when('/user/ads/delete/:id', {
                 templateUrl: './views/partials/delete-ad.html',
                 controller: 'MyAdsCtrl'
-            }).when('/user/profile',{
-                templateUrl:'./views/partials/edit-profile.html',
-                controller:'UserCtrl'
+            }).when('/user/profile', {
+                templateUrl: './views/partials/edit-profile.html',
+                controller: 'UserCtrl'
+                //admin part
+            }).when('/admin/ads', {
+                templateUrl: './views/partials/admin/admin-ads.html',
+                controller: 'AdminAdsCtrl'
+            }).when('/admin/users', {
+                templateUrl: './views/partials/admin/admin-users.html',
+                controller: 'UserCtrl'
             })
 
-            .otherwise({redirectTo: '/'});
+            .otherwise({redirectTo: '/user/home'});
     }])
     .run(function ($rootScope, $location, $log) {
         $rootScope.$on('$routeChangeError', function (ev, current, previous, rejection) {
