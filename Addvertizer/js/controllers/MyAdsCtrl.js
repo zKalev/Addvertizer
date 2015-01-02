@@ -12,7 +12,6 @@ addApp.controller('MyAdsCtrl',
                 }
             }
 
-
             $scope.setStatus = function (status) {
                 if (status === -1) {
                     $scope.status = undefined;

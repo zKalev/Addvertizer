@@ -16,7 +16,6 @@ addApp.factory('AddsResource', ['$resource', 'AuthorizationService', 'baseServic
             }
         }),
         userAdsResource = $resource(baseServiceUrl + '/user/ads/:id', null, {
-
             'create': {method: 'POST', params: {id: '@id'}, isArray: false, headers: headers},
             'getMyAds': {
                 method: 'GET', params: {
@@ -42,7 +41,6 @@ addApp.factory('AddsResource', ['$resource', 'AuthorizationService', 'baseServic
 
             'publishAgain': {method: 'PUT', params: {id: '@id'}, headers: headers}
         }),
-
         adminAdsResource = $resource(baseServiceUrl + '/admin/Ads', null, {
             getAllAds: {
                 method: 'GET', isArray: false, params: {
@@ -54,6 +52,12 @@ addApp.factory('AddsResource', ['$resource', 'AuthorizationService', 'baseServic
                     PageSize: numberAdsPerPage
                 }, headers: headers
             }
+        }),
+        approveAdResource = $resource(baseServiceUrl + '/admin/Ads/Approve/:id', null, {
+            approveAd: {method: 'PUT', params: {id: '@id'}, headers: headers}
+        }),
+        rejectAdResource = $resource(baseServiceUrl + '/admin/Ads/Reject/:id', null, {
+            rejectAd: {method: 'PUT', params: {id: '@id'}, headers: headers}
         })
     return {
         create: function (ad) {
@@ -84,7 +88,7 @@ addApp.factory('AddsResource', ['$resource', 'AuthorizationService', 'baseServic
         getById: function (adId) {
             return userAdsResource.getById({id: adId}).$promise;
         },
-        getAdminAds: function (startPage,status, categoryId, townId, sortBy) {
+        getAdminAds: function (startPage, status, categoryId, townId, sortBy) {
             return adminAdsResource.getAllAds({
                 Status: status,
                 CategoryId: categoryId,
@@ -92,6 +96,12 @@ addApp.factory('AddsResource', ['$resource', 'AuthorizationService', 'baseServic
                 SortBy: sortBy,
                 StartPage: startPage
             }).$promise;
+        },
+        approveAd: function (id) {
+            return approveAdResource.approveAd({id: id}).$promise;
+        },
+        rejectAd: function (id) {
+            return rejectAdResource.rejectAd({id: id}).$promise;
         }
     }
 }]);

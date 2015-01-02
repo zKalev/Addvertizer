@@ -62,18 +62,26 @@
         <div class="row">
             <hr class="hr-admin-ad"/>
         </div>
-        <div class="row">
+        <div class="row"  ng-controller="AdminAdsCtrl">
             <div class="col-sm-offset-1 col-sm-2">
-                <button class="btn btn-primary min-width-100-percent" ng-click="approveAd(add.id)">Approve</button>
+                <button class="btn btn-primary min-width-100-percent" ng-click="adminAdsOperations.approveAd(add.id)">
+                    Approve
+                </button>
             </div>
             <div class="col-sm-offset-1 col-sm-2">
-                <button class="btn btn-primary min-width-100-percent">Reject</button>
+                <button class="btn btn-primary min-width-100-percent" ng-click="adminAdsOperations.rejectAd(add.id)">
+                    Reject
+                </button>
             </div>
             <div class="col-sm-offset-1 col-sm-2">
-                <button class="btn btn-primary min-width-100-percent">Edit</button>
+                <button class="btn btn-primary min-width-100-percent" ng-click="adminAdsOperations.editAd(add.id)">
+                    Edit
+                </button>
             </div>
             <div class="col-sm-offset-1 col-sm-2">
-                <button class="btn btn-primary min-width-100-percent">Delete</button>
+                <button class="btn btn-primary min-width-100-percent" ng-click="adminAdsOperations.deleteAd(add.id)">
+                    Delete
+                </button>
             </div>
 
 

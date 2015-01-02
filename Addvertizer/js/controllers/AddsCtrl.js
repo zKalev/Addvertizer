@@ -28,24 +28,6 @@ addApp.controller('AddsCtrl',
                     });
             }
 
-            $scope.categoriesFunc = {
-                setCategoryId: function (id) {
-                    if (id === -1)
-                        $scope.categoryId = undefined;
-                    else
-                        $scope.categoryId = id;
-                }
-            }
-
-            $scope.townsFunc = {
-                setTownId: function (id) {
-                    if (id === -1)
-                        $scope.townId = undefined;
-                    else
-                        $scope.townId = id;
-                }
-            }
-
             $scope.publish = function (ad) {
                 console.log(ad);
                 var loggedUser = UserResource.getUserProfile();

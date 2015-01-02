@@ -66,5 +66,8 @@ addApp.controller('UserCtrl',
                 $scope.loadUsers();
 
             })
+            
+            
+
 
         }]);
