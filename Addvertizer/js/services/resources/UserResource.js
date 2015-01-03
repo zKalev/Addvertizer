@@ -1,6 +1,6 @@
-addApp.factory('UserResource', ['$resource', 'AuthorizationService', 'baseServiceUrl','numberUsersPerPAge', function ($resource, AuthorizationService, baseServiceUrl,numberUsersPerPAge) {
+addApp.factory('UserResource', ['$resource', 'AuthorizationService', 'baseServiceUrl', 'numberUsersPerPAge', function ($resource, AuthorizationService, baseServiceUrl, numberUsersPerPAge) {
     var headers = AuthorizationService.getAuthorizationHeader(),
-        userResource = $resource(baseServiceUrl + '/admin/Users', null, {
+        adminUsersResource = $resource(baseServiceUrl + '/admin/Users', null, {
 
             all: {
                 method: 'GET', params: {
@@ -8,24 +8,34 @@ addApp.factory('UserResource', ['$resource', 'AuthorizationService', 'baseServic
                     PageSize: numberUsersPerPAge
                 }, headers: headers
             }
+
         }),
-        userProfile = $resource(baseServiceUrl + '/user/profile', null, {
-            getUserProfile: {
+        adminUpdateUsersResource = $resource(baseServiceUrl + '/admin/User', null, {
+            updateUser: {method: 'PUT', params: {username: '@username'}, headers: headers}
+        }),
+
+        loggedUserProfile = $resource(baseServiceUrl + '/user/profile', null, {
+            getLoggedUserProfile: {
                 method: 'GET', isArray: false, headers: headers
             },
-            updateUserProfile: {method: 'PUT', isArray: false, headers: headers}
+            updateLoggedUserProfile: {method: 'PUT', isArray: false, headers: headers}
         });
 
     return {
 
         all: function (startPage) {
-            return userResource.all({StartPage: startPage}).$promise;
+            return adminUsersResource.all({StartPage: startPage}).$promise;
         },
-        getUserProfile: function () {
-            return userProfile.getUserProfile().$promise;
+        updateUser: function (user) {
+            return adminUpdateUsersResource.updateUser({username: user.username}, user).$promise;
         },
-        updateUserProfile: function (user) {
-            return userProfile.updateUserProfile(user).$promise;
+
+
+        getLoggedUserProfile: function () {
+            return loggedUserProfile.getLoggedUserProfile().$promise;
+        },
+        updateLoggedUserProfile: function (user) {
+            return loggedUserProfile.updateLoggedUserProfile(user).$promise;
         }
     }
 

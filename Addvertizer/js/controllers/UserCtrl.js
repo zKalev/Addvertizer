@@ -20,7 +20,7 @@ addApp.controller('UserCtrl',
 
             $scope.updateProfile = function (user) {
 
-                UserResource.updateUserProfile(user).then(
+                UserResource.updateLoggedUserProfile(user).then(
                     function (data) {
                         NotificationService.success(data.message);
                         console.log(data);
@@ -32,7 +32,7 @@ addApp.controller('UserCtrl',
                 )
             }
             $scope.loadUserProfile = function () {
-                UserResource.getUserProfile().then(
+                UserResource.getLoggedUserProfile().then(
                     function (data) {
                         $scope.user = data;
                         console.log(data)

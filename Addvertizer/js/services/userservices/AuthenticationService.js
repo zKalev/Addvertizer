@@ -48,17 +48,8 @@ addApp.factory('AuthenticationService', ['$q', '$http', 'Identity', 'baseService
             return deferred.promise;
         },
         userInfo: function () {
-
             var userInfo = Identity.getCurrentUser();
             return userInfo;
-            if (userInfo) {
-               deferred.resolve(userInfo);
-            }
-            else {
-
-            }
-
-            // return deferred.promise;
         },
         changePassword: function (pass) {
             var deferred = $q.defer(),

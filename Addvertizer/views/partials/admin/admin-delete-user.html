@@ -1,0 +1,45 @@
+<div class="container-fluid">
+
+    <div class="row">
+        <div class="col-md-2">
+            <div class="row">
+                <div ng-include="'views/partials/admin/navigation.html'"></div>
+            </div>
+        </div>
+
+        <div class="col-md-offset-1 col-md-8  ">
+            <div class="row">
+                <div class="col-md-offset-3 col-md-5">
+                    <!--<div ng-include="'views/partials/admin/admin-edit-profile.html'"></div>-->
+                    <form>
+                        <div class="form-group breadcrumb text-center text-primary">
+                            <strong>Delete User</strong>
+                            <hr class="hr-admin-ad"/>
+                            <label for="delete-username">Username:</label>
+                            <span id="delete-username" class="field-wrapper">{{currentUser.username}}</span>
+                            <label for="delete-name">Name:</label>
+                            <span id="delete-name" class="field-wrapper">{{currentUser.name}}</span>
+                            <label for="delete-email">Email:</label>
+                            <span id="delete-email" class="field-wrapper">{{currentUser.email}}</span>
+                            <label for="delete-phone">Phone:</label>
+                            <span id="delete-phone" class="field-wrapper">{{currentUser.phoneNumber}}</span>
+                            <label for="delete-town">Town:</label>
+                            <span id="delete-town" class="field-wrapper margin-bottom-15">{{currentUser.townName}}</span>
+
+                            <button class="btn-primary btn-md" ng-click="adminUsersOperations.deleteUser(currentUser.username)">Delete</button>
+                            <button class="btn-primary btn-md" ng-click="location.path('/admin/users')">Cancel</button>
+
+                        </div>
+                    </form>
+                </div>
+                <div class="col-md-offset-1 col-md-3">
+
+                </div>
+            </div>
+
+        </div>
+        <div class="col-md-1 ">
+
+        </div>
+    </div>
+</div>

@@ -1,0 +1,28 @@
+<form>
+    <div class="form-group breadcrumb text-center text-primary">
+        <strong>Edit User</strong>
+        <hr class="hr-admin-ad"/>
+        <label for="username">Username:</label>
+        <span id="username" class="field-wrapper">{{currentUser.username}}</span>
+        <label for="input-name">Name:</label>
+        <input ng-model="currentUser.name" id="input-name" class="form-control"/>
+        <label for="input-email">Email:</label>
+        <input ng-model="currentUser.email" id="input-email" class="form-control"/>
+        <label for="input-phone">Phone:</label>
+        <input ng-model="currentUser.phoneNumber" id="input-phone" class="form-control"/>
+        <label for="select-town">Town:</label>
+        <select id="select-town" ng-model="currentUser.townId" class="form-control ">
+            <option ng-repeat="town in towns" value="{{town.id}}"
+                    ng-selected="currentUser.townId===town.id">{{town.name}}
+            </option>
+        </select>
+
+        <div class="checkbox">
+            <label>
+                <input ng-model="currentUser.isAdmin" type="checkbox"> Is Administrator?
+            </label>
+        </div>
+        <button class="btn-primary btn-md" ng-click="adminUsersOperations.updateProfile(currentUser)">Update</button>
+
+    </div>
+</form>

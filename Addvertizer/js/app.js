@@ -36,14 +36,20 @@ var addApp = angular.module('AddApp', ['ngRoute', 'ngResource', 'ngCookies', 'ui
                 controller: 'AdminAdsCtrl'
             }).when('/admin/ads/edit/:id', {
                 templateUrl: './views/partials/admin/admin-edit-ad.html',
-                controller:'AdminAdsCtrl'
+                controller: 'AdminAdsCtrl'
             })
-
             .when('/admin/users', {
                 templateUrl: './views/partials/admin/admin-users.html',
-                controller: 'UserCtrl'
+                controller: 'AdminUserCtrl'
+            }).when('/admin/users/edit/:editId', {
+                templateUrl: './views/partials/admin/admin-edit-user.html',
+                controller:'AdminUserCtrl'
+            }).when('/admin/users/delete/:deleteId', {
+                templateUrl: './views/partials/admin/admin-delete-user.html',
+                controller:'AdminUserCtrl'
+            }).when('/admin/categories',{
+                
             })
-
             .otherwise({redirectTo: '/user/home'});
     }])
     .run(function ($rootScope, $location, $log) {
