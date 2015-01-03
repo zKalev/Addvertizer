@@ -1,12 +1,17 @@
 addApp.factory('CategoriesResource', ['$resource', 'baseServiceUrl', function ($resource, baseServiceUrl) {
-    var CategoriesResource = $resource(baseServiceUrl + '/categories', null, {
+   // var headers = AuthorizationService.getAuthorizationHeader(),
+       var categoriesResource = $resource(baseServiceUrl + '/categories', null, {
 
-        all: {method: 'GET', isArray: true}
-    });
+            all: {method: 'GET', isArray: true}
+            //create: {method: 'POST', headers: headers}
+        });
     return {
 
         all: function () {
-            return CategoriesResource.all().$promise;
+            return categoriesResource.all().$promise;
+        },
+        createCategory: function (category) {
+            return categoriesResource.create(category).$promise;
         }
     }
 }])

@@ -48,7 +48,17 @@ var addApp = angular.module('AddApp', ['ngRoute', 'ngResource', 'ngCookies', 'ui
                 templateUrl: './views/partials/admin/admin-delete-user.html',
                 controller:'AdminUserCtrl'
             }).when('/admin/categories',{
-                
+                templateUrl:'./views/partials/admin/categories-list.html',
+                controller:'AdminCategoriesCtrl'
+            }).when('/admin/categories/edit/:editId',{
+                templateUrl:'./views/partials/admin/edit-category.html',
+                controller:'AdminCategoriesCtrl'
+            }).when('/admin/categories/delete/:deleteId',{
+                templateUrl:'./views/partials/admin/delete-category.html',
+                controller:'AdminCategoriesCtrl'
+            }).when('/admin/categories/create',{
+                templateUrl:'./views/partials/admin/create-category.html',
+                controller:'AdminCategoriesCtrl'
             })
             .otherwise({redirectTo: '/user/home'});
     }])

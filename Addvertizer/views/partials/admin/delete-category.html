@@ -1,0 +1,21 @@
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-2">
+            <div ng-include="'./views/partials/admin/navigation.html'"></div>
+        </div>
+        <div class="col-md-offset-2 col-md-6 text-center breadcrumb">
+
+
+            <h3>Edit Category</h3>
+            <hr class="hr-admin-ad"/>
+            <label for="edit-category">Category</label>
+            <span id="edit-category" class="field-wrapper">{{currentCategory.name}}</span>
+
+            <br/>
+
+            <button class="btn btn-primary" ng-click="deleteCategory(currentCategory)">Delete</button>
+            <button class="btn btn-primary" ng-click="location.path('/admin/categories')">Cancel</button>
+        </div>
+        <div class="col-md-2"></div>
+    </div>
+</div>
