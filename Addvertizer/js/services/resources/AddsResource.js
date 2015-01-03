@@ -41,17 +41,19 @@ addApp.factory('AddsResource', ['$resource', 'AuthorizationService', 'baseServic
 
             'publishAgain': {method: 'PUT', params: {id: '@id'}, headers: headers}
         }),
-        adminAdsResource = $resource(baseServiceUrl + '/admin/Ads', null, {
+        adminAdsResource = $resource(baseServiceUrl + '/admin/Ads/:id', null, {
             getAllAds: {
                 method: 'GET', isArray: false, params: {
                     Status: '@Status',
                     CategoryId: '@CategoryId',
                     TownId: '@TownId',
-                    SortBy: '@SortBy',
                     StartPage: '@StartPage',
                     PageSize: numberAdsPerPage
                 }, headers: headers
-            }
+            },
+            delete: {method: 'DELETE', params: {id: '@id'}, headers: headers},
+            getAdById: {method: 'GET', params: {id: '@id'}, headers: headers},
+            update: {method: 'PUT', params: {id: '@id'}, headers: headers}
         }),
         approveAdResource = $resource(baseServiceUrl + '/admin/Ads/Approve/:id', null, {
             approveAd: {method: 'PUT', params: {id: '@id'}, headers: headers}
@@ -88,13 +90,13 @@ addApp.factory('AddsResource', ['$resource', 'AuthorizationService', 'baseServic
         getById: function (adId) {
             return userAdsResource.getById({id: adId}).$promise;
         },
-        getAdminAds: function (startPage, status, categoryId, townId, sortBy) {
+        getAdminAds: function (startPage, status, categoryId, townId) {
             return adminAdsResource.getAllAds({
+                StartPage: startPage,
                 Status: status,
                 CategoryId: categoryId,
-                TownId: townId,
-                SortBy: sortBy,
-                StartPage: startPage
+                TownId: townId
+
             }).$promise;
         },
         approveAd: function (id) {
@@ -102,6 +104,15 @@ addApp.factory('AddsResource', ['$resource', 'AuthorizationService', 'baseServic
         },
         rejectAd: function (id) {
             return rejectAdResource.rejectAd({id: id}).$promise;
+        },
+        deleteAdminAd: function (id) {
+            return adminAdsResource.delete({id: id}).$promise;
+        },
+        getAdminAdById: function (id) {
+            return adminAdsResource.getAdById({id: id}).$promise;
+        },
+        updateAdminAd: function (ad) {
+            return adminAdsResource.update({id: ad.id}, ad).$promise;
         }
     }
 }]);

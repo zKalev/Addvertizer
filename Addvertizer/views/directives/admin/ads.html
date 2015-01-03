@@ -1,6 +1,5 @@
 <div class="container-fluid">
-
-    <div ng-repeat="add in adminadsdata" class="breadcrumb">
+    <div ng-repeat="add in adminadsdata" class="breadcrumb" id={{add.id}}>
         <div class="row margin-bottom-20">
             <div class="col-sm-6 text-center">
                 <span><strong>{{add.title}}</strong></span>
@@ -62,24 +61,28 @@
         <div class="row">
             <hr class="hr-admin-ad"/>
         </div>
-        <div class="row"  ng-controller="AdminAdsCtrl">
+        <div class="row">
             <div class="col-sm-offset-1 col-sm-2">
-                <button class="btn btn-primary min-width-100-percent" ng-click="adminAdsOperations.approveAd(add.id)">
+                <button class="btn btn-primary min-width-100-percent"
+                        ng-click="adminadsdata.adminAdsOperations.approveAd(add)">
                     Approve
                 </button>
             </div>
             <div class="col-sm-offset-1 col-sm-2">
-                <button class="btn btn-primary min-width-100-percent" ng-click="adminAdsOperations.rejectAd(add.id)">
+                <button class="btn btn-primary min-width-100-percent"
+                        ng-click="adminadsdata.adminAdsOperations.rejectAd(add)">
                     Reject
                 </button>
             </div>
             <div class="col-sm-offset-1 col-sm-2">
-                <button class="btn btn-primary min-width-100-percent" ng-click="adminAdsOperations.editAd(add.id)">
+                <button class="btn btn-primary min-width-100-percent"
+                        ng-click="adminadsdata.adminAdsOperations.navigateToEdit(add.id)">
                     Edit
                 </button>
             </div>
             <div class="col-sm-offset-1 col-sm-2">
-                <button class="btn btn-primary min-width-100-percent" ng-click="adminAdsOperations.deleteAd(add.id)">
+                <button class="btn btn-primary min-width-100-percent"
+                        ng-click="adminadsdata.adminAdsOperations.deleteAd(add.id)">
                     Delete
                 </button>
             </div>

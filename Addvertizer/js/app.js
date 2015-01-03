@@ -34,7 +34,12 @@ var addApp = angular.module('AddApp', ['ngRoute', 'ngResource', 'ngCookies', 'ui
             }).when('/admin/ads', {
                 templateUrl: './views/partials/admin/admin-ads.html',
                 controller: 'AdminAdsCtrl'
-            }).when('/admin/users', {
+            }).when('/admin/ads/edit/:id', {
+                templateUrl: './views/partials/admin/admin-edit-ad.html',
+                controller:'AdminAdsCtrl'
+            })
+
+            .when('/admin/users', {
                 templateUrl: './views/partials/admin/admin-users.html',
                 controller: 'UserCtrl'
             })

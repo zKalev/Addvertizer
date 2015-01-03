@@ -36,6 +36,7 @@ addApp.controller('ApplicationCtrl',
                     throw Error(error);
                 });
 
+
             $scope.categoriesFunc = {
                 setCategoryId: function (id) {
                     if (id === -1)

@@ -1,0 +1,76 @@
+<div class="container-fluid">
+
+    <div class="row">
+        <div class="col-md-2">
+            <div ng-if="isAuthenticated()" ng-include="'views/partials/admin/navigation.html'"></div>
+        </div>
+        <div class="col-md-8">
+
+            <div class="breadcrumb">
+                <div class="row margin-bottom-20">
+                    <div class="col-md-6 text-center">
+                        <label for="edit-title">Title:</label>
+                        <input id="edit-title" ng-model="adminAd.title"/>
+                        <br/>
+                        <label for="edit-text"></label>
+                        <input ng-model="adminAd.text" id="edit-text"/>
+                    </div>
+
+                </div>
+                <div class="row">
+                    <div class="  col-sm-7">
+
+                        <div class="row margin-bottom-15">
+                            <div class="col-sm-12 field-wrapper"> {{add.text}}</div>
+                        </div>
+                        <div class="row margin-bottom-15">
+                            <div class="col-sm-2"> Username:</div>
+                            <div class="col-sm-10"><span class="field-wrapper"> {{add.ownerUsername}}</span></div>
+                        </div>
+                        <div class="row margin-bottom-15">
+                            <div class="col-sm-2"><span> Name:</span></div>
+                            <div class="col-sm-10"><span class="field-wrapper"> {{add.ownerName}}</span></div>
+                        </div>
+                        <div class="row margin-bottom-15">
+                            <div class="col-sm-2"><span>Email:</span></div>
+                            <div class="col-sm-10"><span class="field-wrapper"> {{add.ownerEmail}}</span></div>
+                        </div>
+                        <div class="row margin-bottom-15">
+                            <div class="col-sm-2"> Tel:</div>
+                            <div class="col-sm-10"><span class="field-wrapper">{{add.ownerPhone}}</span></div>
+                        </div>
+                        <div class="row margin-bottom-15">
+                            <div class="col-sm-2"> Category:</div>
+                            <div class="col-sm-10"><span class="field-wrapper">{{add.categoryName}}</span></div>
+                        </div>
+                        <div class="row margin-bottom-15">
+                            <div class="col-sm-2"> Town:</div>
+                            <div class="col-sm-10"><span class="field-wrapper"> {{add.townName}}</span></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-offset-1 col-sm-4">
+                        <div class="row margin-bottom-20">
+                            <img data-ng-src='{{add.imageDataUrl}}' width="70%" height="70%"
+                                 class="pull-right img-thumbnail image-size"/>
+
+                            <img ng-hide="add.imageDataUrl" ng-src="./img/no_image_available_svg.png" width="60%"
+                                 height="70%"
+                                 class="pull-right"/>
+                        </div>
+                        <div class="row margin-bottom-15"></div>
+                        <div class="row margin-bottom-15"></div>
+                        <div class="row margin-bottom-15"></div>
+                        <div class="row margin-bottom-15 text-center">
+
+                            <div class="center-block"> Status: <span class="field-wrapper admin-ad-status">{{add.status}}</span>
+                            </div>
+
+                        </div>
+                    </div>
+
+            </div>
+        </div>
+    </div>
+</div>

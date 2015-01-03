@@ -1,13 +1,64 @@
 addApp.controller('AdminAdsCtrl',
-    ['$scope', '$location', 'AddsResource', 'UserResource', 'NotificationService', 'numberAdsPerPage',
-        function ($scope, $location, AddsResource, UserResource, NotificationService, numberAdsPerPage) {
+    ['$scope', '$location', '$routeParams', 'AddsResource', 'UserResource', 'NotificationService', 'numberAdsPerPage',
+        function ($scope, $location, $routeParams, AddsResource, UserResource, NotificationService, numberAdsPerPage) {
+            $scope.pager = {
+                currentPage: 1,
+                numPerPage: numberAdsPerPage,
+                maxSize: 5,
+                numPages: function () {
+                    return $scope.numPage;
+                }
+            }
+            var adminAdsOperations = {
 
+                approveAd: function (ad) {
+                    AddsResource.approveAd(ad.id).then(
+                        function (data) {
+                            console.log(data);
+                            ad.status = 'Approved'
+                            NotificationService.success(data.message);
+                        },
+                        function (error) {
+                            NotificationService.error(error.data.message);
+                            console.log(error);
+                        })
+                },
+                rejectAd: function (ad) {
+                    AddsResource.rejectAd(ad.id).then(
+                        function (data) {
+                            console.log(data);
+                            ad.status = 'Rejected'
+                            NotificationService.success(data.message);
+                            // $location.path('/admin/ads');
+                        },
+                        function (error) {
+                            console.log(error);
+                            NotificationService.error(error.data.message)
+                        })
+                },
+                deleteAd: function (id) {
+                    AddsResource.deleteAdminAd(id).then(
+                        function (data) {
+                            console.log(data);
+                            NotificationService.success(data.message);
+                            $('#' + id).hide();
 
-            $scope.getAdminAds = function (status, categoryId, townId, sortBy) {
-                AddsResource.getAdminAds($scope.pager.currentPage, status, categoryId, townId, sortBy).then(
+                        }, function (error) {
+                            console.log(error);
+                            NotificationService.error(error.data.message);
+                        })
+                },
+                navigateToEdit: function (id) {
+                    $location.path('/admin/ads/edit/' + id);
+                }
+            }
+
+            $scope.getAdminAds = function (status, categoryId, townId) {
+                AddsResource.getAdminAds($scope.pager.currentPage, status, categoryId, townId).then(
                     function (data) {
                         console.log(data);
                         $scope.adminadsdata = data.ads;
+                        $scope.adminadsdata.adminAdsOperations = adminAdsOperations;
                         $scope.numPage = data.numPages;
                     },
                     function (error) {
@@ -21,21 +72,30 @@ addApp.controller('AdminAdsCtrl',
                     $scope.status = status;
                 }
             }
-
-            $scope.pager = {
-                currentPage: 1,
-                numPerPage: numberAdsPerPage,
-                maxSize: 5,
-                numPages: function () {
-                    return $scope.numPage;
+            $scope.categoriesFunc = {
+                setCategoryId: function (id) {
+                    if (id === -1)
+                        $scope.categoryId = undefined;
+                    else
+                        $scope.categoryId = id;
                 }
             }
+
+            $scope.townsFunc = {
+                setTownId: function (id) {
+                    if (id === -1)
+                        $scope.townId = undefined;
+                    else
+                        $scope.townId = id;
+                }
+            }
+
             //pager watch
             $scope.$watch('pager.currentPage + pager.numPerPage', function () {
                 $scope.getAdminAds($scope.status, $scope.categoryId, $scope.townId);
 
             });
-            $scope.$watch('categoryId', function (newValue, oldValue) {
+            $scope.$watch('categoryId', function (newValue) {
                 $scope.getAdminAds($scope.status, newValue, $scope.townId);
                 $scope.pager.currentPage = 1;
             });
@@ -50,33 +110,23 @@ addApp.controller('AdminAdsCtrl',
                 $scope.getAdminAds($scope.status);
                 $scope.pager.currentPage = 1;
             });
+            $scope.location = $location;
+            //
+            $scope.getById = function (id) {
+                AddsResource.getAdminAdById(id).then(
+                    function (data) {
+                        console.log(data);
+                        $scope.adminAd = data;
 
-
-            $scope.adminAdsOperations = {
-
-                approveAd: function (id) {
-                    AddsResource.approveAd(id).then(
-                        function (data) {
-                            console.log(data);
-                            NotificationService.success(data.message);
-                        },
-                        function (error) {
-                            NotificationService.error(error.data.message);
-                            console.log(error);
-                        })
-                },
-                rejectAd: function (id) {
-                    AddsResource.rejectAd(id).then(
-                        function (data) {
-                            console.log(data);
-                            NotificationService.success(data.message);
-                        },
-                        function (error) {
-                            console.log(error);
-                            NotificationService.error(error.data.message)
-                        })
-                }
+                    },
+                    function (error) {
+                        console.log(error);
+                        NotificationService.error(error.data.message);
+                    }
+                )
             }
+
+            $scope.getById($routeParams.id);
 
 
         }])
