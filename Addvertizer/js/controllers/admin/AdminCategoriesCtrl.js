@@ -16,6 +16,7 @@ addApp.controller('AdminCategoriesCtrl', ['$scope', '$location', '$routeParams',
         $scope.navigateToDeleteCategory = function (category) {
             $location.path('/admin/categories/delete/' + JSON.stringify(category));
         }
+
         if ($routeParams.editId !== undefined) {
             $scope.currentCategory = JSON.parse($routeParams.editId);
         }

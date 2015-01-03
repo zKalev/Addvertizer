@@ -5,7 +5,7 @@ addApp.directive('adminads', [function () {
         restrict: 'A',
         templateUrl: './views/directives/admin/ads.html',
         scope: {
-            adminadsdata: '=adminadsdata',
+            adminadsdata: '=adminadsdata'
         }
     }
 }]);

@@ -66,7 +66,14 @@ addApp.controller('ApplicationCtrl',
                 '/user/ads': 'Ads - My Ads',
                 '/user/ads/delete': 'Ads - Delete Ad',
                 '/user/ads/edit': 'Ads - Edit Ad',
-                '/user/profile': 'Ads - Edit User Profile'
+                '/user/profile': 'Ads - Edit User Profile',
+                '/admin/ads': 'Ads Administration – Ads',
+                '/admin/ads/edit': 'Ads Administration – Edit Ad',
+                '/admin/users': 'Ads Administration – Users',
+                '/admin/users/edit': 'Ads Administration – Edit User Profile',
+                '/admin/users/delete': 'Ads Administration – Delete User',
+                '/admin/categories': 'Ads Administration – Categories',
+                '/admin/towns/list': 'Ads Administration – Towns'
 
             };
 

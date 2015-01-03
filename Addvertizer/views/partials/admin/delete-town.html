@@ -1,0 +1,21 @@
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-2">
+            <div ng-include="'./views/partials/admin/navigation.html'"></div>
+        </div>
+        <div class="col-md-offset-2 col-md-6 text-center breadcrumb">
+
+
+            <h3>Delete Town</h3>
+            <hr class="hr-admin-ad"/>
+            <label for="delete-town">Town</label>
+            <span id="delete-town" class="field-wrapper margin-bottom-15">{{currentTown.name}}</span>
+
+            <br/>
+
+            <button class="btn btn-primary" ng-click="deleteTown(currentTown.id)">Delete</button>
+            <button class="btn btn-primary" ng-click="location.path('/admin/towns/list')">Cancel</button>
+        </div>
+        <div class="col-md-2"></div>
+    </div>
+</div>

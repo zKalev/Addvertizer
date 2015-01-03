@@ -59,6 +59,18 @@ var addApp = angular.module('AddApp', ['ngRoute', 'ngResource', 'ngCookies', 'ui
             }).when('/admin/categories/create',{
                 templateUrl:'./views/partials/admin/create-category.html',
                 controller:'AdminCategoriesCtrl'
+            }).when('/admin/towns/list',{
+                templateUrl:'./views/partials/admin/towns-list.html',
+                controller:'AdminTownsCtrl'
+            }).when('/admin/towns/edit/:editId',{
+                templateUrl:'./views/partials/admin/edit-town.html',
+                controller:'AdminTownsCtrl'
+            }).when('/admin/towns/delete/:deleteId',{
+                templateUrl:'./views/partials/admin/delete-town.html',
+                controller:'AdminTownsCtrl'
+            }).when('/admin/towns/create',{
+                templateUrl:'./views/partials/admin/create-town.html',
+                controller:'AdminTownsCtrl'
             })
             .otherwise({redirectTo: '/user/home'});
     }])
