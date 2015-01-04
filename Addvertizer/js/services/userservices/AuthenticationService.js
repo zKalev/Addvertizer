@@ -21,6 +21,7 @@ addApp.factory('AuthenticationService', ['$q', '$http', 'Identity', 'baseService
             $http.post(userUrl + '/login', 'username=' + user.username + '&password=' + user.password, {headers: {'Content-Type': 'application/x-www-form-urlencoded'}})
                 .success(function (response) {
                     if (response['access_token']) {
+
                         Identity.setCurrentUser(response);
                         AuthorizationService.setAuthorizationHeader(response['access_token']);
                         deferred.resolve(response);
@@ -72,8 +73,30 @@ addApp.factory('AuthenticationService', ['$q', '$http', 'Identity', 'baseService
             else {
                 return false;
             }
+        },
+        isAuthorizedAsUser: function () {
+            if (Identity.isAuthenticated()) {
+                return true;
+            }
+            else {
+                return $q.reject('not authorized');
+            }
+        },
+        isAuthorizedAsAdmin: function () {
+            if (Identity.isAuthenticated()) {
+                var currUser = Identity.getCurrentUser();
+                if (currUser.isAdmin) {
+
+                    return true;
+                }
+                else {
+                    return $q.reject('not admin');
+                }
+            }
+            else {
+                return $q.reject('not authorized');
+            }
         }
     }
-
 
 }])

@@ -1,7 +1,15 @@
 'use strict'
 addApp.controller('ApplicationCtrl',
-    ['$scope', '$location', 'CategoriesResource', 'TownsResource', 'AuthenticationService',
-        function ($scope, $location, CategoriesResource, TownsResource, AuthenticationService) {
+    ['$rootScope','$scope', '$location', 'CategoriesResource', 'TownsResource', 'AuthenticationService',
+        function ($rootScope,$scope, $location, CategoriesResource, TownsResource, AuthenticationService) {
+
+
+
+
+
+
+
+
 
             $scope.isAuthenticated = function () {
                 return AuthenticationService.isAuthenticated();
