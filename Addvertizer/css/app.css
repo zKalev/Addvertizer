@@ -62,7 +62,9 @@
 .padding-20px {
     padding: 20px;
 }
-
+.padding-15px {
+    padding: 15px;
+}
 .vertical-line {
     width: 2px;
     height: 200px;
@@ -76,6 +78,16 @@
 .width-20pc {
     width: 20%;
 }
+.width-60pc {
+    width: 60%;
+}
+.width-50pc {
+    width: 50%;
+}
+.width-15pc {
+    width: 15%;
+}
+
 
 .width-100px {
     width: 100px;

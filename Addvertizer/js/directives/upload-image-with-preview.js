@@ -8,7 +8,8 @@ addApp.directive('uploadImageWithPreview', ['$window', function ($window) {
         templateUrl: './views/directives/uploadImage.html',
         link: function (scope, elem, attr, ngModel) {
             var $inputFile = elem.find('.input-file'),
-                $inputText = elem.find('.input-text');
+                $inputText = elem.find('.input-text'),
+                $deleteImg=elem.find('.delete-img');
 
             $inputFile.on('change', function (ev) {
                 var file = ev.target.files[0],
@@ -27,7 +28,9 @@ addApp.directive('uploadImageWithPreview', ['$window', function ($window) {
                         ngModel.$setViewValue(finalUrl);
                     });
                 }
-
+                $deleteImg.on('click',function(){
+                    ngModel.$setViewValue(undefined);
+                })
 
             });
 

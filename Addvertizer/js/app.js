@@ -58,7 +58,7 @@ var addApp = angular.module('AddApp', ['ngRoute', 'ngResource', 'ngCookies', 'ui
                 resolve: routeUserChecks.authenticatedAsAdmin
             }).when('/admin/ads/edit/:id', {
                 templateUrl: './views/partials/admin/admin-edit-ad.html',
-               // controller: 'AdminAdsCtrl',
+                controller: 'AdminAdsCtrl',
                 resolve: routeUserChecks.authenticatedAsAdmin
             })
             .when('/admin/users', {

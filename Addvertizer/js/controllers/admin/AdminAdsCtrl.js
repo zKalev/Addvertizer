@@ -50,9 +50,26 @@ addApp.controller('AdminAdsCtrl',
                 },
                 navigateToEdit: function (id) {
                     $location.path('/admin/ads/edit/' + id);
+                },
+                navigateToDelete: function (id) {
+                    $location.path('/admin/ads/delete/' + id);
+                },
+                updateAdminAd: function (ad) {
+                    AddsResource.updateAdminAd(ad).then(
+                        function (data) {
+                            console.log(data);
+                            NotificationService.success(data.message);
+                            $location.path('/admin/ads')
+                        },
+
+                        function (error) {
+                            console.log(error);
+                            NotificationService.error(error.data.message);
+                        }
+                    )
                 }
             }
-
+            $scope.adminAdsOperations = adminAdsOperations;
             $scope.getAdminAds = function (status, categoryId, townId) {
                 AddsResource.getAdminAds($scope.pager.currentPage, status, categoryId, townId).then(
                     function (data) {
@@ -117,7 +134,7 @@ addApp.controller('AdminAdsCtrl',
                     function (data) {
                         console.log(data);
                         $scope.adminAd = data;
-
+                        console.log(data)
                     },
                     function (error) {
                         console.log(error);

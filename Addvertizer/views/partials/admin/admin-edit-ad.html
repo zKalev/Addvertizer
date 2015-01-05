@@ -13,63 +13,109 @@
 
                         <div class="row margin-bottom-15">
                             <div class="col-sm-2"> Title:</div>
-                            <div class="col-sm-10"><input ng-model="ad.title"/></div>
+                            <div class="col-sm-10"><input ng-model="adminAd.title" class="form-control"/></div>
                         </div>
                         <div class="row margin-bottom-15">
                             <div class="col-sm-2"> Text:</div>
-                            <div class="col-sm-10"><textarea ng-model="ad.title"/></div>
+                            <div class="col-sm-10"><textarea ng-model="adminAd.text" class="form-control"/></div>
                         </div>
                         <div class="row margin-bottom-15">
                             <div class="col-sm-2"><span> Image:</span></div>
                             <div class="col-sm-10">
-                                <div upload-image-with-preview ng-model="add.imageDataUrl"></div>
+                                <div upload-image-with-preview ng-model="adminAd.imageDataUrl"></div>
 
                             </div>
                         </div>
                         <div class="row margin-bottom-15">
-                            <div class="col-sm-2"><span>Email:</span></div>
-                            <div class="col-sm-10"><input ng-model="ad.title"/></div>
-                        </div>
-                        <div class="row margin-bottom-15">
-                            <div class="col-sm-2"> Tel:</div>
-                            <div class="col-sm-10"><input ng-model="ad.title"/></div>
+                            <div class="col-sm-2"> Username:</div>
+                            <div class="col-sm-10"><input ng-model="adminAd.ownerName" class="form-control"/></div>
                         </div>
                         <div class="row margin-bottom-15">
                             <div class="col-sm-2"> Category:</div>
-                            <div class="col-sm-10"><span class="field-wrapper">{{add.categoryName}}</span></div>
+                            <div class="col-sm-10">
+                                <select class="form-control" ng-model="adminAd.categoryId">
+                                    <option ng-repeat="category in categories" value={{category.id}}
+                                            ng-selected="category.id===adminAd.categoryId">
+                                        {{category.name}}
+                                    </option>
+                                </select>
+                            </div>
                         </div>
                         <div class="row margin-bottom-15">
                             <div class="col-sm-2"> Town:</div>
-                            <div class="col-sm-10"><span class="field-wrapper"> {{add.townName}}</span></div>
+                            <div class="col-sm-10">
+                                <select ng-model="adminAd.townId" class="form-control">
+                                    <option ng-repeat="town in towns" value={{town.id}}
+                                            ng-selected="town.id===adminAd.townId">
+                                        {{town.name}}
+                                    </option>
+                                </select>
+                            </div>
                         </div>
+                        <div class="row margin-bottom-15">
+                            <div class="col-sm-2"> Status:</div>
+                            <div class="col-sm-10">
+                                <select ng-model="adminAd.status" class="form-control">
+                                    <option  value="WaitingApproval" ng-selected="'WaitingApproval'===adminAd.status">
+                                        Waiting Approval
+                                    </option>
+                                    <option  ng-selected="'Published'===adminAd.status">
+                                       Published
+                                    </option>
+                                    <option  ng-selected="'Rejected'===adminAd.status">
+                                        Rejected
+                                    </option>
+                                    <option  ng-selected="'Inactive'===adminAd.status">
+                                        Inactive
+                                    </option>
+                                </select>
+                            </div>
+                        </div>
+                        <!--<div class="row margin-bottom-15">-->
+                            <!--<div class="col-sm-2"> Date:</div>-->
+                            <!--<div class="col-sm-10">-->
+                                <!--<select class="form-control">-->
+                                    <!--<option ng-repeat="town in towns" ng-selected="town.id===adminAd.townId">-->
+                                        <!--{{town.name}}-->
+                                    <!--</option>-->
+                                <!--</select>-->
+                            <!--</div>-->
+                        <!--</div>-->
                     </div>
                     <div class="col-md-4">
                         <div class="row margin-bottom-20">
-                            <img data-ng-src='{{add.imageDataUrl}}' width="70%" height="70%"
-                                 class="pull-right img-thumbnail image-size"/>
 
-                            <img ng-hide="add.imageDataUrl" ng-src="./img/no_image_available_svg.png" width="60%"
+                            <img ng-show="adminAd.imageDataUrl" data-ng-src='{{adminAd.imageDataUrl}}' width="70%"
                                  height="70%"
-                                 class="pull-right"/>
+                                 class="img-thumbnail image-size"/>
+
+                            <img ng-hide="adminAd.imageDataUrl" ng-src="./img/no_image_available_svg.png" width="60%"
+                                 height="70%"
+                                 class="img-thumbnail image-size"/>
                         </div>
                     </div>
                 </div>
+
 
                 <div class="col-md-offset-1 col-sm-4">
 
-                    <div class="row margin-bottom-15"></div>
-                    <div class="row margin-bottom-15"></div>
-                    <div class="row margin-bottom-15"></div>
-                    <div class="row margin-bottom-15 text-center">
+                    <!--<div class="row margin-bottom-15"></div>-->
+                    <!--<div class="row margin-bottom-15"></div>-->
+                    <!--<div class="row margin-bottom-15"></div>-->
+                    <!--<div class="row margin-bottom-15 text-center">-->
 
-                        <div class="center-block"> Status: <span
-                                class="field-wrapper admin-ad-status">{{add.status}}</span>
-                        </div>
-
-                    </div>
                 </div>
+                <div class="row">
+                    <div class="col-md-offset-3 col-md-6">
+                        <div class="butt"></div>
 
+                        <button class="btn btn-default" ng-click="adminAdsOperations.updateAdminAd(adminAd)">Edit</button>
+                        <button class="btn btn-default" ng-click="location.path('/admin/ads')">Cancel</button>
+                    </div>
+                    <div class="col-md-3"></div>
+                </div>
             </div>
         </div>
     </div>
+</div>
 </div>
