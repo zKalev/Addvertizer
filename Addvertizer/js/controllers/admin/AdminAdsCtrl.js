@@ -21,7 +21,7 @@ addApp.controller('AdminAdsCtrl',
                         function (error) {
                             NotificationService.error(error.data.message);
                             console.log(error);
-                        })
+                        });
                 },
                 rejectAd: function (ad) {
                     AddsResource.rejectAd(ad.id).then(
@@ -34,7 +34,7 @@ addApp.controller('AdminAdsCtrl',
                         function (error) {
                             console.log(error);
                             NotificationService.error(error.data.message)
-                        })
+                        });
                 },
                 deleteAd: function (id) {
                     AddsResource.deleteAdminAd(id).then(
@@ -46,7 +46,7 @@ addApp.controller('AdminAdsCtrl',
                         }, function (error) {
                             console.log(error);
                             NotificationService.error(error.data.message);
-                        })
+                        });
                 },
                 navigateToEdit: function (id) {
                     $location.path('/admin/ads/edit/' + id);
@@ -65,9 +65,11 @@ addApp.controller('AdminAdsCtrl',
                         function (error) {
                             console.log(error);
                             NotificationService.error(error.data.message);
-                        }
-                    )
-                }
+                        });
+                },
+                //formatDate: function (data) {
+                //    return new Date(data).format("dd-m-yy")
+                //}
             }
             $scope.adminAdsOperations = adminAdsOperations;
             $scope.getAdminAds = function (status, categoryId, townId) {
