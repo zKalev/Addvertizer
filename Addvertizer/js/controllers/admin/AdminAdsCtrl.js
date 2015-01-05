@@ -66,7 +66,7 @@ addApp.controller('AdminAdsCtrl',
                             console.log(error);
                             NotificationService.error(error.data.message);
                         });
-                },
+                }
                 //formatDate: function (data) {
                 //    return new Date(data).format("dd-m-yy")
                 //}

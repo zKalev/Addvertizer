@@ -1,6 +1,6 @@
 <div class="breadcrumb text-center">
     <h3> Towns</h3>
-    <a class="center-block" ng-click="func.setTownId(-1)">All</a>
+    <a class="center-block searching-attributes-wrapper" ng-click="func.setTownId(-1)">All</a>
     <a ng-repeat="town in data" ng-click='func.setTownId(town.id)'
-       class="center-block">{{town.name}}</a>
+       class="center-block searching-attributes-wrapper">{{town.name}}</a>
 </div>

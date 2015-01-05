@@ -1,6 +1,12 @@
 <div class="breadcrumb text-center">
     <h3> Categories</h3>
-    <a class="center-block" ng-click="func.setCategoryId(-1)">All</a>
-    <a ng-repeat="category in data"
-       class="center-block" ng-click="func.setCategoryId(category.id)">{{category.name}}</a>
+    <!--<span class="searching-attributes-wrapper">-->
+
+    <!--</span>-->
+
+    <!--<span ng-repeat="category in data" class="searching-attributes-wrapper">-->
+    <a  ng-click="func.setCategoryId(-1)" class="center-block searching-attributes-wrapper">All</a>
+    <a ng-repeat="category in data" class="center-block searching-attributes-wrapper"
+       ng-click="func.setCategoryId(category.id)">{{category.name}}</a>
+    <!--</span>-->
 </div>

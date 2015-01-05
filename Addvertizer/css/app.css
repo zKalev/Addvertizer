@@ -187,6 +187,24 @@ img.img-responsive {
     /*height: 20%;*/
 }
 
+.change-color-to-pink-on-hover:hover{
+    color:#c7254e;
+}
+
+.searching-attributes-wrapper{
+    paddin:5px;
+    background-color: #597ea2;
+    border:solid ;
+    border-color: #e5e5e5;
+    color:rgba(11, 25, 57, 0.97)
+}
+.searching-attributes-wrapper:hover{
+    paddin:15px;
+    background-color:  rgba(252, 159, 187, 0.97);
+    border:solid ;
+    border-color: #112ccc;
+}
+
 #new-ad-image {
     width: 30%;
 }
