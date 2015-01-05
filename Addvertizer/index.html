@@ -17,15 +17,15 @@
 
 </head>
 <body ng-controller="ApplicationCtrl" ng-cloak>
-<div class="navbar navbar-default">
+<div class="navbar navbar-default padding-20px" >
 
     <div class="container">
         <div class="row">
             <div class="col-md-6 ">
                 <span class="text-success pull-right">{{getHeadingByPath(location.path())}}</span>
             </div>
-            <div class="col-md-offset-2 col-md-4">
-                <div ng-show="isAuthenticated()" class="nav navbar-nav navbar-right ">
+            <div class="col-md-offset-2 col-md-4 ">
+                <div ng-show="isAuthenticated()" class="nav navbar-nav navbar-right  ">
 
                     <span class="text-success">{{getCurrentUser().username }}</span>
                     <a href="#" ng-click="logout()">logout</a>
@@ -46,6 +46,7 @@
     Author: <strong>Zhivko Kalev</strong>
     <br/>
     © 2014 by Software University Foundation, No Rights Reserved
+</footer>
 <hr/>
 
 <script src="lib/jquery/jquery.min.js"></script>
@@ -71,6 +72,7 @@
 <script src="js/directives/myAds.js"></script>
 <script src="js/directives/admin/adminads.js"></script>
 <script src="js/directives/admin/adminusers.js"></script>
+<script src="js/directives/upload-image-with-preview.js"></script>
 
 <script src="js/services/NotificationService.js"></script>
 <script src="js/services/userservices/Identity.js"></script>
@@ -97,5 +99,6 @@
 <script src="js/controllers/admin/AdminUserCtrl.js"></script>
 <script src="js/controllers/admin/AdminCategoriesCtrl.js"></script>
 <script src="js/controllers/admin/AdminTownsCtrl.js"></script>
+<script src="js/controllers/UserPublishNewAdController.js"></script>
 </body>
 </html>

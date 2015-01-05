@@ -21,15 +21,8 @@
                         </div>
                         <div class="row margin-bottom-15">
                             <div class="col-sm-2"><span> Image:</span></div>
-                            <div class="col-sm-8">
-                            <input id="input-file" name="file">
-
-                            </div>
-                            <div class="col-sm-2">
-                                 <span class="btn btn-default btn-file">
-                             Browse <input type="file" name="file" id="edit-ad-image" ng-model="ad.imageDataUrl" base-sixty-four-input/>
-
-                              </span>
+                            <div class="col-sm-10">
+                                <div upload-image-with-preview ng-model="add.imageDataUrl"></div>
 
                             </div>
                         </div>

@@ -3,14 +3,6 @@ addApp.controller('ApplicationCtrl',
     ['$rootScope','$scope', '$location', 'CategoriesResource', 'TownsResource', 'AuthenticationService',
         function ($rootScope,$scope, $location, CategoriesResource, TownsResource, AuthenticationService) {
 
-
-
-
-
-
-
-
-
             $scope.isAuthenticated = function () {
                 return AuthenticationService.isAuthenticated();
             }
