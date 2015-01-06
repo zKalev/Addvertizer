@@ -1,6 +1,6 @@
 addApp.controller('AddsCtrl',
-    ['$scope', '$location', 'AddsResource', 'UserResource','CategoriesResource', 'TownsResource', 'NotificationService', 'numberAdsPerPage',
-        function ($scope, $location, AddsResource, UserResource,CategoriesResource, TownsResource,NotificationService, numberAdsPerPage) {
+    ['$scope', '$location', 'AddsResource', 'UserResource', 'CategoriesResource', 'TownsResource', 'NotificationService', 'numberAdsPerPage',
+        function ($scope, $location, AddsResource, UserResource, CategoriesResource, TownsResource, NotificationService, numberAdsPerPage) {
 
             $scope.pager = {
                 currentPage: 1,
@@ -40,9 +40,7 @@ addApp.controller('AddsCtrl',
                         NotificationService.success('Ad published successfully!');
 
                         $location.path('/user/home')
-                    }
-                )
-
+                    })
             }
 
             $scope.alert = function (msg) {
@@ -50,21 +48,29 @@ addApp.controller('AddsCtrl',
             }
             $scope.image = {};
 
-            $scope.$watch('categoryId', function (newValue, oldValue) {
+            $scope.$watch('categoryId', function (newValue, oldValue, scope) {
                 $scope.getAdds(newValue, $scope.townId);
                 $scope.pager.currentPage = 1;
             })
 
             //pager watch
-            $scope.$watch('pager.currentPage + pager.numPerPage', function () {
-                $scope.getAdds($scope.categoryId, $scope.townId);
-
+            $scope.$watch('pager.currentPage + pager.numPerPage', function (newValue, oldValue, scope) {
+                if (newValue === oldValue) {
+                    //do nothing
+                    console.log('--initialization phase do nothing')
+                } else {
+                    $scope.getAdds($scope.categoryId, $scope.townId);
+                }
             })
 
-            $scope.$watch('townId', function (newValue) {
-                $scope.getAdds($scope.categoryId, newValue);
-                $scope.pager.currentPage = 1;
-
+            $scope.$watch('townId', function (newValue, oldValue, scope) {
+                if (newValue === oldValue) {
+                    //do nothing
+                    console.log('--initialization phase do nothing')
+                } else {
+                    $scope.getAdds($scope.categoryId, newValue);
+                    $scope.pager.currentPage = 1;
+                }
             })
 
             TownsResource.all().then(

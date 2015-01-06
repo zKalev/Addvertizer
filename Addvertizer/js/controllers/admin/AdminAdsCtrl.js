@@ -71,6 +71,7 @@ addApp.controller('AdminAdsCtrl',
                 //    return new Date(data).format("dd-m-yy")
                 //}
             }
+
             $scope.adminAdsOperations = adminAdsOperations;
             $scope.getAdminAds = function (status, categoryId, townId) {
                 AddsResource.getAdminAds($scope.pager.currentPage, status, categoryId, townId).then(
@@ -108,26 +109,50 @@ addApp.controller('AdminAdsCtrl',
                         $scope.townId = id;
                 }
             }
-
+            $scope.getAdminAds();
             //pager watch
-            $scope.$watch('pager.currentPage + pager.numPerPage', function () {
-                $scope.getAdminAds($scope.status, $scope.categoryId, $scope.townId);
+            $scope.$watch('pager.currentPage + pager.numPerPage', function (newValue, oldValue, scope) {
+
+                if (newValue === oldValue) {
+                          //do nothing
+                    console.log('--initialization phase do nothing')
+                } else {
+                    $scope.getAdminAds($scope.status, $scope.categoryId, $scope.townId);
+                }
+            });
+            $scope.$watch('categoryId', function (newValue,oldValue,scope) {
+
+                if (newValue === oldValue) {
+                    //do nothing
+                    console.log('--initialization phase do nothing')
+                } else {
+                    $scope.getAdminAds($scope.status, newValue, $scope.townId);
+                    $scope.pager.currentPage = 1;
+                }
 
             });
-            $scope.$watch('categoryId', function (newValue) {
-                $scope.getAdminAds($scope.status, newValue, $scope.townId);
-                $scope.pager.currentPage = 1;
+
+            $scope.$watch('townId', function (newValue,oldValue,scope) {
+
+                if (newValue === oldValue) {
+                    //do nothing
+                    console.log('--initialization phase do nothing')
+                } else {
+                    $scope.getAdminAds($scope.status, $scope.categoryId, newValue);
+                    $scope.pager.currentPage = 1;
+                }
             });
 
-            $scope.$watch('townId', function (newValue) {
-                $scope.getAdminAds($scope.status, $scope.categoryId, newValue);
-                $scope.pager.currentPage = 1;
+            $scope.$watch('status', function (newValue,oldValue,scope) {
 
-            });
+                if (newValue === oldValue) {
+                    //do nothing
+                    console.log('--initialization phase do nothing')
+                } else {
+                    $scope.getAdminAds($scope.status);
+                    $scope.pager.currentPage = 1;
+                }
 
-            $scope.$watch('status', function () {
-                $scope.getAdminAds($scope.status);
-                $scope.pager.currentPage = 1;
             });
             $scope.location = $location;
             //

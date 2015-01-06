@@ -122,14 +122,26 @@ addApp.controller('MyAdsCtrl',
                         throw Error(error);
                     });
             }
-
+            $scope.getMyAdds();
             //pager watch
-            $scope.$watch('pager.currentPage + pager.numPerPage', function () {
-                $scope.getMyAdds($scope.status);
+            $scope.$watch('pager.currentPage + pager.numPerPage', function (newValue,oldValue,scope) {
+                if (newValue === oldValue) {
+                    //do nothing
+                    console.log('--initialization phase do nothing')
+                } else {
+                    $scope.getMyAdds($scope.status);
+                }
+
             })
-            $scope.$watch('status', function () {
-                $scope.getMyAdds($scope.status);
-                $scope.pager.currentPage = 1;
+            $scope.$watch('status', function (newValue,oldValue,scope) {
+                if (newValue === oldValue) {
+                    //do nothing
+                    console.log('--initialization phase do nothing')
+                } else {
+                    $scope.getMyAdds($scope.status);
+                    $scope.pager.currentPage = 1;
+                }
+
             })
 
         }]);
