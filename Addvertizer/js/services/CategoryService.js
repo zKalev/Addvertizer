@@ -46,5 +46,4 @@ addApp.factory('CategoryService', ['$q', '$http', 'baseServiceUrl', 'Authorizati
         }
     }
 
-
 }]);

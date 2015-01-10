@@ -1,7 +1,7 @@
 'use strict'
 addApp.controller('AdminUserCtrl',
-    ['$scope', '$location', '$routeParams', 'AuthenticationService', 'UserService', 'UserResource', 'NotificationService', 'baseServiceUrl', 'numberUsersPerPAge',
-        function ($scope, $location, $routeParams, AuthenticationService, UserService, UserResource, NotificationService, baseServiceUrl, numberUsersPerPAge) {
+    ['$scope', '$location', '$routeParams', '$sanitize','$sce', 'AuthenticationService', 'UserService', 'UserResource', 'NotificationService', 'baseServiceUrl', 'numberUsersPerPAge',
+        function ($scope, $location, $routeParams,$sanitize, $sce, AuthenticationService, UserService, UserResource, NotificationService, baseServiceUrl, numberUsersPerPAge) {
 
 
             $scope.pager = {
@@ -15,6 +15,12 @@ addApp.controller('AdminUserCtrl',
 
             var adminUsersOperations = {
                 navigateToEdit: function (user) {
+                    console.log(user);
+
+                    user.username = $sanitize(user.username);
+                    user.name = $sanitize(user.name);
+                    alert(JSON.stringify(user));
+                    console.log(user)
                     $location.path('/admin/users/edit/' + JSON.stringify(user));
                 },
                 navigateToDelete: function (user) {
@@ -62,6 +68,7 @@ addApp.controller('AdminUserCtrl',
 
             if ($routeParams.editId !== undefined) {
                 $scope.currentUser = JSON.parse($routeParams.editId);
+
             }
             if ($routeParams.deleteId !== undefined) {
                 $scope.currentUser = JSON.parse($routeParams.deleteId);

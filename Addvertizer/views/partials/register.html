@@ -11,7 +11,7 @@
                         <div class="form-group">
                             <label for="username" class="pull-left">Username</label>
                             <input id="username" type="text" placeholder="Username"
-                                   ng-model="user.username" required="required" class="form-control"/>
+                                   ng-model="user.username" required class="form-control"/>
                         </div>
                     </div>
                     <div class="col-md-8 "></div>
@@ -22,7 +22,7 @@
                             <label for="password" class="pull-left">Password</label>
 
                             <input id="password" type="password" placeholder="password"
-                                   ng-model="user.password" required="required" class="form-control"/>
+                                   ng-model="user.password" required class="form-control"/>
                         </div>
 
                     </div>
@@ -31,7 +31,7 @@
                             <label for="confirm-password" class="pull-left">Confirm Password</label>
 
                             <input id="confirm-password" type="password" placeholder="confirm password"
-                                   ng-model="user.confirmPassword" required="required" class="form-control"/>
+                                   ng-model="user.confirmPassword"  class="form-control"/>
                         </div>
                         <div class="col-md-3"></div>
                     </div>
@@ -42,15 +42,15 @@
                             <label for="password" class="pull-left">Name</label>
 
                             <input id="name" type="text" placeholder="name"
-                                   ng-model="user.name" required="required" class="form-control"/>
+                                   ng-model="user.name" required class="form-control"/>
                         </div>
                     </div>
                     <div class="col-md-offset-1 col-md-4 ">
                         <div class="form-group">
                             <label for="email" class="pull-left">Email</label>
 
-                            <input id="email" type="text" placeholder="email"
-                                   ng-model="user.email" required="required" class="form-control"/>
+                            <input id="email" ng-pattern="emailPattern" type="text" placeholder="email"
+                                   ng-model="user.email" required class="form-control"/>
                         </div>
                         <div class="col-md-3"></div>
                     </div>
@@ -61,7 +61,7 @@
                             <label for="phone" class="pull-left">Phone</label>
 
                             <input id="phone" type="text" placeholder="phone"
-                                   ng-model="user.phone" required="required" class="form-control"/>
+                                   ng-model="user.phone" required class="form-control"/>
                         </div>
                     </div>
                     <div class="col-md-offset-1 col-md-4 ">
@@ -81,7 +81,7 @@
                 <div class="row">
                     <button ng-click="signUp(user)"
 
-                            class="btn btn-primary btn-sm">
+                            class="btn btn-primary btn-sm" ng-disabled="signUpForm.$invalid || user.password != user.confirmPassword">
                         Create
                     </button>
                     <a href="#/" class="btn btn-primary btn-sm">Cancel</a>
