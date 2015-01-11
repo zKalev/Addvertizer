@@ -1,5 +1,5 @@
 'use strict'
-var addApp = angular.module('AddApp', ['ngRoute', 'ngResource','ngSanitize', 'ngCookies', 'ui.bootstrap', 'naif.base64']).
+var addApp = angular.module('AddApp', ['ngRoute', 'ngResource','ngSanitize', 'ngCookies', 'ui.bootstrap']).
     config(['$routeProvider', '$httpProvider', function ($routeProvider, $httpProvider) {
 
         var routeUserChecks = {

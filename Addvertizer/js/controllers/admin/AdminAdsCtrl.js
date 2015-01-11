@@ -15,7 +15,7 @@ addApp.controller('AdminAdsCtrl',
                     AddsResource.approveAd(ad.id).then(
                         function (data) {
                             console.log(data);
-                            ad.status = 'Approved'
+                            ad.status = 'Published'
                             NotificationService.success(data.message);
                         },
                         function (error) {
@@ -55,6 +55,7 @@ addApp.controller('AdminAdsCtrl',
                     $location.path('/admin/ads/delete/' + id);
                 },
                 updateAdminAd: function (ad) {
+                    ad.changeImage = true;
                     AddsResource.updateAdminAd(ad).then(
                         function (data) {
                             console.log(data);

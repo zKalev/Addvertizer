@@ -19,7 +19,6 @@ addApp.controller('AdminUserCtrl',
 
                     user.username = $sanitize(user.username);
                     user.name = $sanitize(user.name);
-                    alert(JSON.stringify(user));
                     console.log(user)
                     $location.path('/admin/users/edit/' + JSON.stringify(user));
                 },
@@ -51,7 +50,6 @@ addApp.controller('AdminUserCtrl',
                     )
                 },
                 changePassword: function (credentials) {
-                    alert(JSON.stringify(credentials))
                     UserService.setPassword(credentials).then(
                         function (data) {
                             NotificationService.success(data.message);

@@ -28,11 +28,12 @@ addApp.directive('uploadImageWithPreview', ['$window', function ($window) {
                         ngModel.$setViewValue(finalUrl);
                     });
                 }
-                $deleteImg.on('click',function(){
-                    ngModel.$setViewValue(undefined);
-                })
+
 
             });
+            $deleteImg.on('click',function(){
+                ngModel.$setViewValue(undefined);
+            })
 
             function _arrayBufferToBase64(buffer) {
                 var binary = '';
