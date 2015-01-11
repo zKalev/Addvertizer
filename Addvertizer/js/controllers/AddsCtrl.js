@@ -11,8 +11,7 @@ addApp.controller('AddsCtrl',
                 }
             }
 
-            $scope.category = undefined;
-            $scope.townId = undefined;
+
 
             $scope.getAdds = function getAdds(categoryId, townId) {
                 AddsResource.getAdds($scope.pager.currentPage, categoryId, townId).then(
@@ -39,7 +38,7 @@ addApp.controller('AddsCtrl',
                     function (data) {
                         NotificationService.success('Ad published successfully!');
 
-                        $location.path('/user/home')
+                        $location.path('/user/ads')
                     })
             }
 
